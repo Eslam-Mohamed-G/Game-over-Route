@@ -55,23 +55,6 @@ header {
     color: var(--active-color) !important;
 }
 
-/* .card{
-    transition: all ease-in-out .3s;
-}
-.card:hover{
-    scale: 1.04;
-}
-.card .card-img-top, .card .text-bg-primary{
-    opacity: .5;
-    transition: all ease-in-out .3s;
-
-}
-.card:has(.card-body:hover) .card-img-top,
-.card:has(.card-body:hover) .text-bg-primary{
-    opacity: 1;
-} */
-
-
 @media screen and (max-width: 996px) {
     .collapse {
         display: block !important;
