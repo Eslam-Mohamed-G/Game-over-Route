@@ -43,35 +43,36 @@ async function getGames(category) {
     }
 }
 
-// var colShow = document.getElementById("gameData");
-// function displayDiv(games){
-//     console.log(games)
-//     for(i=0; i < games.length; i++){
-//         var rowGame = document.createElement("div");
-//         rowGame.innerHTML = 
-//         `
-//             <div data-id=${games[i].id} class="card h-100 bg-transparent" role="button">
-//                 <div class=" card-body">
-//                     <figure class="position-relative">
-//                         <img class="card-img-top object-fit-cover h-100"
-//                             src=${games[i].thumbnail}>
-//                     </figure>
-//                     <figcaption>
-//                         <div class="hstack justify-content-between">
-//                             <h3 class="h6 small">${games[i].title}</h3>
-//                             <span class="badge text-bg-primary p-2">Free</span>
-//                         </div>
-//                         <p class="card-text small text-center opacity-50">
-//                             ${games[i].short_description}
-//                         </p>
-//                     </figcaption>
-//                 </div>
-//                 <footer class="card-footer small hstack justify-content-between">
-//                     <span class="badge badge-color">${games[i].genre}</span>
-//                     <span class="badge badge-color">${games[i].platform}</span>
-//                 </footer>
-//             </div>
-//         `
-//         colShow.appendChild(rowGame);
-//     }
-// }
+var colShow = document.getElementById("gameData");
+var rowGame = document.createElement("div");
+function displayDiv(games){
+    colShow.innerHTML = "";
+    for(i=0; i < games.length; i++){
+        var rowGame = document.createElement("div");
+        rowGame.innerHTML = 
+        `
+            <div data-id=${games[i].id} class="card h-100 bg-transparent" role="button">
+                <div class=" card-body">
+                    <figure class="position-relative">
+                        <img class="card-img-top object-fit-cover h-100"
+                            src=${games[i].thumbnail}>
+                    </figure>
+                    <figcaption>
+                        <div class="hstack justify-content-between">
+                            <h6>${games[i].title}</h6>
+                            <span class="badge text-bg-primary p-2">Free</span>
+                        </div>
+                        <p class="card-text text-center">
+                            ${games[i].short_description}
+                        </p>
+                    </figcaption>
+                </div>
+                <footer class="card-footer small hstack justify-content-between">
+                    <span class="badge badge-color rounded-2 bg-dark">${games[i].genre}</span>
+                    <span class="badge badge-color rounded-2 bg-dark">${games[i].platform}</span>
+                </footer>
+            </div>
+        `
+        colShow.appendChild(rowGame);
+    }
+}
