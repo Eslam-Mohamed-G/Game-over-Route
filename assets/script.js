@@ -68,8 +68,8 @@ function displayDiv(games){
                     </figcaption>
                 </div>
                 <footer class="card-footer small hstack justify-content-between">
-                    <span class="badge badge-color rounded-2 bg-dark">${games[i].genre}</span>
-                    <span class="badge badge-color rounded-2 bg-dark">${games[i].platform}</span>
+                    <span class="badge badge-color rounded-2">${games[i].genre}</span>
+                    <span class="badge badge-color rounded-2">${games[i].platform}</span>
                 </footer>
             </div>
         `

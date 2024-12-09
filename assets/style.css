@@ -3,13 +3,14 @@
     --navbar-color: rgb(68, 86, 144);
     --header-color: rgb(255, 255, 255);
     --active-color: rgb(23, 162, 184);
-    --input-color: rgb(182, 182, 182);
-    --border-color: rgb(206, 212, 218);
+    --input-color: rgb(128, 128, 128);
+    --bg-span-color: rgb(54, 57, 62);
     --warning-color: rgb(255, 193, 7);
 }
 
 * {
     box-sizing: border-box;
+    font-family: "Comfortaa", cursive;
 }
 
 body {
@@ -69,6 +70,18 @@ header {
 .card:has(.card-body:hover) .card-img-top,
 .card:has(.card-body:hover) .text-bg-primary{
     opacity: 1;
+}
+
+.card-text{
+    color: var(--input-color);
+}
+
+.hstack h6{
+    color: var(--header-color);
+}
+
+.card-footer span{
+    background-color: var(--bg-span-color);
 }
 
 @media screen and (max-width: 996px) {
