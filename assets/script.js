@@ -18,7 +18,7 @@ navLinks.forEach(link => {
             activeLink.classList.remove("active");
         });
         link.classList.add("active");
-        var category = link.getAttribute("data-category") || "mmorpg";
+        var category = link.getAttribute("data-category");
         console.log(category);
         getGames(category)
     })
@@ -37,44 +37,41 @@ async function getGames(category) {
     try {
         var api = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, options)
         var response = await api.json();
-        console.log(response);
+        displayDiv(response);
     } catch (error) {
         console.error(error);
     }
-    
-    // for(i=0; i<response.length; i++){
-    //     console.log(response[i]);
-
-    // }
 }
 
-
-// var colShow = document.getElementById("colShow");
-//     arr.forEach(gaeDiv=>{
-//         var colGame = document.createElement("div");
-//         colGame.innerHTML = 
+// var colShow = document.getElementById("gameData");
+// function displayDiv(games){
+//     console.log(games)
+//     for(i=0; i < games.length; i++){
+//         var rowGame = document.createElement("div");
+//         rowGame.innerHTML = 
 //         `
-//             <div data-id=${gaeDiv.id} class="card h-100 bg-transparent" role="button">
+//             <div data-id=${games[i].id} class="card h-100 bg-transparent" role="button">
 //                 <div class=" card-body">
 //                     <figure class="position-relative">
 //                         <img class="card-img-top object-fit-cover h-100"
-//                             src="https://www.freetogame.com/g/572/thumbnail.jpg">
+//                             src=${games[i].thumbnail}>
 //                     </figure>
 //                     <figcaption>
 //                         <div class="hstack justify-content-between">
-//                             <h3 class="h6 small">Ravendawn</h3>
+//                             <h3 class="h6 small">${games[i].title}</h3>
 //                             <span class="badge text-bg-primary p-2">Free</span>
 //                         </div>
 //                         <p class="card-text small text-center opacity-50">
-//                             A,2D,top-down,MMORPG,featuring,homesteading,and,building
+//                             ${games[i].short_description}
 //                         </p>
 //                     </figcaption>
 //                 </div>
 //                 <footer class="card-footer small hstack justify-content-between">
-//                     <span class="badge badge-color">MMORPG</span>
-//                     <span class="badge badge-color">PC (Windows)</span>
+//                     <span class="badge badge-color">${games[i].genre}</span>
+//                     <span class="badge badge-color">${games[i].platform}</span>
 //                 </footer>
 //             </div>
 //         `
-//         colShow.appendChild(colGame);
-//     })
+//         colShow.appendChild(rowGame);
+//     }
+// }
