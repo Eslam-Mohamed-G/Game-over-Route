@@ -11,6 +11,10 @@ toggler.addEventListener("click", function () {
 var navLinks = document.querySelectorAll(".nav-link");
 navLinks.forEach(link => {
     link.addEventListener("click", function(){
+        navLinks.forEach(activeLink => {
+            activeLink.classList.remove("active");
+        });
+        link.classList.add("active");
         var category = link.getAttribute("data-category");
         console.log(category);
         getGames(category)
