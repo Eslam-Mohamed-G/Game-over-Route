@@ -8,15 +8,14 @@ toggler.addEventListener("click", function () {
 
 
 
-// var navLinks = document.querySelectorAll(".nav-link");
-// navLinks.forEach(link => {
-//     link.addEventListener("click", function(){
-//         var category = link.getAttribute("data-category");
-//         console.log(category);
-//         getGames(category)
-//     })
-    
-// })
+var navLinks = document.querySelectorAll(".nav-link");
+navLinks.forEach(link => {
+    link.addEventListener("click", function(){
+        var category = link.getAttribute("data-category");
+        console.log(category);
+        getGames(category)
+    })
+})
 
 
 async function getGames(category) {

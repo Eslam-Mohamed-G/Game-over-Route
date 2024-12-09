@@ -28,6 +28,7 @@ header {
 }
 
 .navbar {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     background-color: var(--navbar-color);
     top: calc(100% - 35px) !important;
     left: 50%;
@@ -51,7 +52,7 @@ header {
 }
 
 .active {
-    color: var(--active-color);
+    color: var(--active-color) !important;
 }
 
 @media screen and (max-width: 996px) {
