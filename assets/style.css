@@ -1,20 +1,22 @@
-:root{
-    --body-color:   rgb(39, 43, 48);
-    --navbar-color:   rgb(68, 86, 144);
+:root {
+    --body-color: rgb(39, 43, 48);
+    --navbar-color: rgb(68, 86, 144);
     --header-color: rgb(255, 255, 255);
     --active-color: rgb(23, 162, 184);
-    --input-color:  rgb(182, 182, 182);
+    --input-color: rgb(182, 182, 182);
     --border-color: rgb(206, 212, 218);
     --warning-color: rgb(255, 193, 7);
 }
 
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: var(--body-color);
 }
-header{
+
+header {
     background-image: url(../assets/image/wraper.png);
     background-position: center;
     background-size: cover;
@@ -24,17 +26,21 @@ header{
     position: relative;
 
 }
-.navbar{
+
+.navbar {
     background-color: var(--navbar-color);
-    top: 100% !important;
-    transform: translateY(50%);
+    top: calc(100% - 35px) !important;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* transform: translateY(50%); */
 }
 
-.navbar-brand, .navbar-brand:hover{
+.navbar-brand, .navbar-brand:hover {
     color: var(--header-color);
 }
 
-.navbar-nav .nav-item .nav-link{
+.navbar-nav .nav-item .nav-link {
     color: var(--header-color);
     font-weight: 400;
     font-size: 12px;
@@ -42,10 +48,23 @@ header{
     transition: all ease-in-out .3s;
 }
 
-.navbar-nav .nav-item .nav-link:hover{
+.navbar-nav .nav-item .nav-link:hover {
     color: var(--active-color);
 }
 
-.active{
+.active {
     color: var(--active-color);
+}
+
+@media screen and (max-width: 996px) {
+    .collapse {
+        display: block !important;
+        max-height: 0px;
+        transition: all ease-in-out 0.3s;
+        overflow: hidden;
+    }
+
+    .collapse.open {
+        max-height: 200px;
+    }
 }

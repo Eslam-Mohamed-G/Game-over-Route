@@ -1,3 +1,7 @@
+
+
+
+
 // var navLinks = document.querySelectorAll(".nav-link");
 // navLinks.forEach(link => {
 //     link.addEventListener("click", function(){
@@ -7,6 +11,7 @@
 //     })
     
 // })
+
 
 async function getGames(category) {
     const options = {
