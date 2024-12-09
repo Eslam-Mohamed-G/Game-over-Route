@@ -14,19 +14,68 @@
 </head>
 
 <body>
-    <header class="container">
-        <div class="row">
-            <div class="navbar">
-
+    <header>
+        <nav class="navbar navbar-expand-lg nav-bg position-sticky z-3 col-md-6 col-lg-9 m-auto rounded-4">
+            <div class="container">
+                <h5 class="navbar-brand mb-0 text-uppercase">
+                    <img src="./assets/image/logo-sm.png" alt="logo photo" style="max-width: 40px"> Game Reviews
+                </h5>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+    
+                <div class="collapse small navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 menu small">
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase active" aria-current="page"
+                                data-category="mmorpg">mmorpg</a>
+                        </li>
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase" data-category="shooter">shooter</a>
+                        </li>
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase" data-category="sailing">sailing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase" data-category="permadeath">permadeath</a>
+                        </li>
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase" data-category="superhero">superhero</a>
+                        </li>
+                        <li class="nav-item">
+                            <a role="button" class="nav-link text-uppercase" data-category="pixel">pixel</a>
+                        </li>
+                    </ul>
+                </div>
+    
             </div>
-        </div>
+        </nav>
     </header>
 
     <main>
         <section class="position-relative">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4" id="gameData">
-                <div class="col">
-                    <div data-id="572" class="card h-100 bg-transparent" role="button">
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4" id="gameData">
+                <div class="col" id="colShow">
+                   
+                </div>
+            </div>
+        </section>
+
+        
+        
+    </main>
+
+
+
+    <script src="./assets/script.js"></script>
+
+</body>
+
+</html>
+
+ <!-- <div data-id="572" class="card h-100 bg-transparent" role="button">
                         <div class=" card-body">
                             <figure class="position-relative">
                                 <img class="card-img-top object-fit-cover h-100"
@@ -46,42 +95,4 @@
                             <span class="badge badge-color">MMORPG</span>
                             <span class="badge badge-color">PC (Windows)</span>
                         </footer>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="details">
-            <div class="container">
-                <header class="hstack justify-content-between">
-                    <h1 class="text-center h3 py-4">Details Game</h1>
-                    <button class="btn-close btn-close-white" id="btnClose"></button>
-                </header>
-                <div class="row g-4" id="detailsContent">
-                    <div class="col-md-4">
-                        <img src="https://www.freetogame.com/g/575/thumbnail.jpg" class="w-100" alt="image details">
-                    </div>
-                    <div class="col-md-8">
-                        <h3>Title: One Punch Man: World</h3>
-                        <p>Category: <span class="badge text-bg-info"> Action Game</span> </p>
-                        <p>Platform: <span class="badge text-bg-info"> Windows</span> </p>
-                        <p>Status: <span class="badge text-bg-info"> Live</span> </p>
-                        <p class="small"></p>
-                        <a class="btn btn-outline-warning" target="_blank"
-                            href="https://www.freetogame.com/open/one-punch-man-world">Show Game
-                        </a>
-                    </div>
-        
-                </div>
-            </div>
-        </section>
-        
-    </main>
-
-
-
-    <script src="./assets/script.js"></script>
-
-</body>
-
-</html>
+                    </div> -->
