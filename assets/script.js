@@ -32,7 +32,7 @@ async function getGames(category) {
     };
 
     try {
-        var api = await fetch('https://free-to-play-games-database.p.rapidapi.com/api/games?category=mmorpg', options)
+        var api = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, options)
         var response = await api.json();
         console.log(response);
     } catch (error) {
