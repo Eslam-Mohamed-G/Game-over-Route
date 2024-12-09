@@ -1,0 +1,66 @@
+:root{
+    --body-color:   rgb(36, 53, 63);
+    --header-color: rgb(23, 162, 184);
+    --input-color:  rgb(182, 182, 182);
+    --border-color: rgb(206, 212, 218);
+    --warning-color: rgb(255, 193, 7);
+}
+
+body{
+    background-color: var(--body-color);
+}
+h1{
+    color: var(--header-color);
+}
+
+input{
+    color: var(--input-color) !important;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 8px;
+    outline: none;
+}
+.btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: all ease-in-out .3s;
+}
+
+.btn:hover{
+    color: white;
+}
+input:focus{
+    border: 1px solid var(--header-color);
+}
+
+.group{
+    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
+}
+.group_input{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn:nth-child(1){
+    border: 1px solid var(--warning-color);
+}
+.logOut .navbar .container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#incorrect, #exist{
+    color: red;
+}
+
+.borderRed{
+    border: 1px solid red;
+}
