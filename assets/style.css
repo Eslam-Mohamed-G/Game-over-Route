@@ -32,8 +32,6 @@ header {
     top: calc(100% - 35px) !important;
     left: 50%;
     transform: translateX(-50%);
-
-    /* transform: translateY(50%); */
 }
 
 .navbar-brand, .navbar-brand:hover {
