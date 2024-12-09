@@ -1,4 +1,10 @@
 
+const toggler = document.querySelector(".navbar-toggler");
+const menu = document.querySelector("#navbarSupportedContent");
+
+toggler.addEventListener("click", function () {
+    menu.classList.toggle("open");
+});
 
 
 
