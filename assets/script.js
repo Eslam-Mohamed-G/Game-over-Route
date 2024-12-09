@@ -1,4 +1,7 @@
-
+document.addEventListener("DOMContentLoaded", function () {
+    // استدعاء البيانات عند فتح الصفحة لأول مرة
+    getGames("mmorpg"); // يمكنك تغيير الفئة الافتراضية حسب الحاجة
+});
 const toggler = document.querySelector(".navbar-toggler");
 const menu = document.querySelector("#navbarSupportedContent");
 
@@ -15,7 +18,7 @@ navLinks.forEach(link => {
             activeLink.classList.remove("active");
         });
         link.classList.add("active");
-        var category = link.getAttribute("data-category");
+        var category = link.getAttribute("data-category") || "mmorpg";
         console.log(category);
         getGames(category)
     })
@@ -44,7 +47,6 @@ async function getGames(category) {
 
     // }
 }
-
 
 
 // var colShow = document.getElementById("colShow");
