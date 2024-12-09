@@ -74,6 +74,12 @@ header {
 
 .card-text{
     color: var(--input-color);
+    display: -webkit-box; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3;
+    line-height: 1.5; 
+    max-height: calc(1.5em * 3); 
 }
 
 .hstack h6{
