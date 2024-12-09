@@ -83,3 +83,9 @@ header {
         max-height: 200px;
     }
 }
+
+@media screen and (max-width: 773px) {
+    .navbar{
+        width: 100% !important;
+    }
+}
