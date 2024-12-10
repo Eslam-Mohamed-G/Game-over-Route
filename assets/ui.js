@@ -6,7 +6,7 @@ class UI {
     }
 
     clearContainer() {
-        this.container.innerHTML = "";
+        this.gameContainer.innerHTML = "";
     }
 
     displayGames(games) {
@@ -43,7 +43,7 @@ class UI {
                 </div>
             `;
 
-            this.container.appendChild(gameCard);
+            this.gameContainer.appendChild(gameCard);
 
             gameCard.addEventListener("click", async () => {
                 const options = {
