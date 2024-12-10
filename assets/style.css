@@ -90,6 +90,18 @@ header {
     background-color: var(--bg-span-color);
 }
 
+.details{
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* inset: 0; */
+    z-index: 99;
+    background-color: var(--body-color);
+    color: var(--header-color);
+    min-height: 100vh;
+}
+
 @media screen and (max-width: 996px) {
     .collapse {
         display: block !important;

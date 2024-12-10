@@ -35,24 +35,43 @@ async function getGames(category) {
     };
 
     try {
-        var api = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, options)
-        var response = await api.json();
+        var apiCategory = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, options);
+        var response = await apiCategory.json();
         displayDiv(response);
     } catch (error) {
         console.error(error);
     }
 }
+// const url = 'https://free-to-play-games-database.p.rapidapi.com/api/game?id=452';
+// const options = {
+// 	method: 'GET',
+// 	headers: {
+// 		'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
+// 		'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+// 	}
+// };
 
+// try {
+// 	const response = await fetch(url, options);
+// 	const result = await response.text();
+// 	console.log(result);
+// } catch (error) {
+// 	console.error(error);
+// }
 var colShow = document.getElementById("gameData");
-var rowGame = document.createElement("div");
+
 function displayDiv(games){
+    console.log(games[1].id);
     colShow.innerHTML = "";
     for(i=0; i < games.length; i++){
         var rowGame = document.createElement("div");
+        rowGame.classList.add("cardId")
+        rowGame.setAttribute("data-id", games[i].id);
+        rowGame.setAttribute("role", "button");
         rowGame.innerHTML = 
         `
-            <div data-id=${games[i].id} class="card h-100 bg-transparent" role="button">
-                <div class=" card-body">
+            <div class="card h-100 bg-transparent">
+                <div class="card-body">
                     <figure class="position-relative">
                         <img class="card-img-top object-fit-cover h-100"
                             src=${games[i].thumbnail}>
@@ -72,7 +91,63 @@ function displayDiv(games){
                     <span class="badge badge-color rounded-2">${games[i].platform}</span>
                 </footer>
             </div>
-        `
+        `;
         colShow.appendChild(rowGame);
+        rowGame.addEventListener("click", gameID)
     }
+}
+
+async function gameID() {
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
+            'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+        }
+    };
+    let id = this.getAttribute("data-id")
+    var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options);
+    // console.log(id)
+    var responseId = await apiId.json();
+    // console.log(responseId)
+    replaceNoneBlock(responseId)
+
+}
+
+var details = document.getElementById("details");
+function replaceNoneBlock(id) {
+    console.log(id)
+    var gameData = document.getElementById("gameData");
+    var btnClose = document.getElementById("btnClose");
+    details.classList.replace("d-none", "d-block")
+    gameData.classList.add("d-none");
+
+
+    var showDetails = document.createElement("div");
+    showDetails.classList.add("container")
+    showDetails.innerHTML = 
+    `
+        <div class="row g-4" id="detailsContent">
+            <div class="col-md-4">
+                <img src=${id.thumbnail} class="w-100" alt="image details">
+            </div>
+
+            <div class="col-md-8">
+                <h3>Title: ${id.title}</h3>
+                <p>Category: ${id.genre}<span class="badge text-bg-info"></span> </p>
+                <p>Platform: ${id.platform}<span class="badge text-bg-info"></span> </p>
+                <p>Status:<span class="badge text-bg-info">${id.status}</span> </p>
+                <p class="small">${id.description}</p>
+                <a class="btn btn-outline-warning" target="_blank"
+                    href=${id.game_url}>Show Game</a>
+            </div>
+        </div>
+    `
+    details.appendChild(showDetails)
+
+    btnClose.addEventListener("click", function(){
+        details.classList.replace("d-block", "d-none")
+        gameData.classList.remove("d-none");
+        showDetails.innerHTML = "";
+    })
 }

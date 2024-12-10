@@ -14,18 +14,18 @@
 </head>
 
 <body>
-    <header>
+    <header class="">
         <nav class="navbar navbar-expand-lg nav-bg position-absolute z-3 col-md-6 col-lg-9 rounded-4">
             <div class="container">
                 <h5 class="navbar-brand mb-0 text-uppercase">
                     <img src="./assets/image/logo-sm.png" alt="logo photo" style="max-width: 40px"> Game Reviews
                 </h5>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-    
+
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                         <li class="nav-item">
@@ -49,7 +49,6 @@
                         </li>
                     </ul>
                 </div>
-    
             </div>
         </nav>
     </header>
@@ -59,7 +58,18 @@
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4" id="gameData">
 
             </div>
-        </div>   
+        </div>
+
+
+
+        <section class="details d-none pb-4" id="details">
+            <div class="container">
+                <div class="hstack justify-content-between">
+                    <h1 class="text-center h3 py-4">Details Game</h1>
+                    <button class="btn-close btn-close-white" id="btnClose"></button>
+                </div>
+            </div>
+        </section>
 
         <!-- <div class="loading">
             <span class="loader"></span>
@@ -69,8 +79,8 @@
 
 
     <script src="./assets/script.js"></script>
+    <!-- <script type="module" src="./app.js"></script> -->
 
 </body>
 
 </html>
-
