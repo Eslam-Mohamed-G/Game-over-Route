@@ -119,9 +119,9 @@ function replaceNoneBlock(id) {
 
             <div class="col-md-8">
                 <h3>Title: ${id.title}</h3>
-                <p>Category: ${id.genre}<span class="badge text-bg-info"></span> </p>
-                <p>Platform: ${id.platform}<span class="badge text-bg-info"></span> </p>
-                <p>Status:<span class="badge text-bg-info">${id.status}</span> </p>
+                <p>Category: <span class="badge text-bg-info">${id.genre}</span> </p>
+                <p>Platform: <span class="badge text-bg-info">${id.platform}</span> </p>
+                <p>Status: <span class="badge text-bg-info">${id.status}</span> </p>
                 <p class="small">${id.description}</p>
                 <a class="btn btn-outline-warning" target="_blank"
                     href=${id.game_url}>Show Game</a>
