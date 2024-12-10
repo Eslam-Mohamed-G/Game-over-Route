@@ -12,5 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     toggler.addEventListener("click", ()=>{
         menu.classList.toggle("open")
-    })
+    });
+
 })
