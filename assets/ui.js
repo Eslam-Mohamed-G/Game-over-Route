@@ -9,6 +9,13 @@ class UI{
 
     displayGames(games){
         this.clearContainer();
+
+        games.forEach(element => {
+            var gameCard = document.createElement("div");
+            gameCard.classList.add("cardId");
+            gameCard.setAttribute("data-id", games[i].id);
+            gameCard.setAttribute("role", "button");
+        });
     }
 }
 export default UI
