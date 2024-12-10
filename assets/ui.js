@@ -42,6 +42,9 @@ class UI{
             `;
 
             this.container.appendChild(gameCard);
+            gameCard.addEventListener("click", function(){
+                console.log(element.id)
+            })
         });
     }
 }
