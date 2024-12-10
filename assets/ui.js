@@ -43,7 +43,7 @@ class UI {
 
             this.container.appendChild(gameCard);
 
-            gameCard.addEventListener("click", async function() {
+            gameCard.addEventListener("click", async () => {
                 const options = {
                     method: 'GET',
                     headers: {
