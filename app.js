@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var toggler = document.querySelector(".navbar-toggler");
     var menu = document.querySelector("#navbarSupportedContent");
 
-    api.fetchGames("mmorpg").then((games) => {ui.displayGames(games);})
+    api.fetchGames("mmorpg").then((games) => {ui.displayGames(games)});
 
     toggler.addEventListener("click", ()=>{
         menu.classList.toggle("open")
