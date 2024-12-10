@@ -1,13 +1,13 @@
-class UI{
+class UI {
     constructor(gameData) {
         this.container = document.getElementById("gameData");
     }
 
-    clearContainer(){
+    clearContainer() {
         this.container.innerHTML = "";
     }
 
-    displayGames(games){
+    displayGames(games) {
         this.clearContainer();
 
         games.forEach(element => {
@@ -17,7 +17,7 @@ class UI{
             gameCard.setAttribute("role", "button");
 
             gameCard.innerHTML =
-            `
+                `
                 <div class="card h-100 bg-transparent">
                     <div class="card-body">
                         <figure class="position-relative">
@@ -42,8 +42,8 @@ class UI{
             `;
 
             this.container.appendChild(gameCard);
-            
-            gameCard.addEventListener("click", async function(){
+
+            gameCard.addEventListener("click", async function() {
                 const options = {
                     method: 'GET',
                     headers: {
@@ -51,14 +51,52 @@ class UI{
                         'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
                     }
                 };
-                let id = this.getAttribute("data-id")
+                let id = gameCard.getAttribute("data-id")
                 var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options);
                 // console.log(id)
                 var responseId = await apiId.json();
-                console.log(responseId)
-                // replaceNoneBlock(responseId)
+                // console.log(responseId)
+                this.replaceNoneBlock(responseId)
             })
         });
+    }
+
+    replaceNoneBlock(id) {
+        var details = document.getElementById("details");
+        // console.log(id)
+        var gameData = document.getElementById("gameData");
+        var btnClose = document.getElementById("btnClose");
+        details.classList.replace("d-none", "d-block")
+        gameData.classList.add("d-none");
+
+
+        var showDetails = document.createElement("div");
+        showDetails.classList.add("container")
+        showDetails.innerHTML =
+            `
+        <div class="row g-4" id="detailsContent">
+            <div class="col-md-4">
+                <img src=${id.thumbnail} class="w-100" alt="image details">
+            </div>
+
+            <div class="col-md-8">
+                <h3>Title: ${id.title}</h3>
+                <p>Category: <span class="badge text-bg-info">${id.genre}</span> </p>
+                <p>Platform: <span class="badge text-bg-info">${id.platform}</span> </p>
+                <p>Status: <span class="badge text-bg-info">${id.status}</span> </p>
+                <p class="small">${id.description}</p>
+                <a class="btn btn-outline-warning" target="_blank"
+                    href=${id.game_url}>Show Game</a>
+            </div>
+        </div>
+    `
+        details.appendChild(showDetails)
+
+        btnClose.addEventListener("click", function () {
+            details.classList.replace("d-block", "d-none")
+            gameData.classList.remove("d-none");
+            showDetails.innerHTML = "";
+        })
     }
 }
 export default UI
