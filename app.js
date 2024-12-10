@@ -19,6 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
         link.addEventListener("click", () => {
             navLinks.forEach( activeLink => { activeLink.classList.remove("active")});
             link.classList.add("active");
+
+            var category = link.getAttribute("data-category");
+            // api.fetchGames(category).then( games => {})
         })
     });
 })

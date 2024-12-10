@@ -6,5 +6,9 @@ class UI{
     clearContainer(){
         this.container.innerHTML = "";
     }
+
+    displayGames(games){
+        this.clearContainer();
+    }
 }
 export default UI
