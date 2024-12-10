@@ -1,9 +1,8 @@
 class UI {
     constructor(gameData) {
-        this.container = document.getElementById("gameData");
-        // this.gameContainer = document.getElementById("gameData");
-        // this.detailsContainer = document.getElementById("details");
-        // this.btnClose = document.getElementById("btnClose");
+        this.gameContainer = document.getElementById("gameData");
+        this.detailsContainer = document.getElementById("details");
+        this.btnClose = document.getElementById("btnClose");
     }
 
     clearContainer() {
