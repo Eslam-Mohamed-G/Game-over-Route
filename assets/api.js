@@ -20,6 +20,16 @@ class GamesAPI {
             return [];
         }
     }
+
+    // async gameID() {
+    //     let id = this.getAttribute("data-id")
+    //     var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, this.options);
+    //     // console.log(id)
+    //     var responseId = await apiId.json();
+    //     // console.log(responseId)
+    //     // replaceNoneBlock(responseId)
+    
+    // }
 }
 
 export default GamesAPI;

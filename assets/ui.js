@@ -42,28 +42,23 @@ class UI{
             `;
 
             this.container.appendChild(gameCard);
-            gameCard.addEventListener("click", function(){
-                console.log(element.id)
+            
+            gameCard.addEventListener("click", async function(){
+                const options = {
+                    method: 'GET',
+                    headers: {
+                        'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
+                        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
+                    }
+                };
+                let id = this.getAttribute("data-id")
+                var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options);
+                // console.log(id)
+                var responseId = await apiId.json();
+                console.log(responseId)
+                // replaceNoneBlock(responseId)
             })
         });
     }
-
-    async gameID() {
-        const options = {
-            method: 'GET',
-            headers: {
-                'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-                'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-            }
-        };
-        let id = this.getAttribute("data-id")
-        var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options);
-        // console.log(id)
-        var responseId = await apiId.json();
-        // console.log(responseId)
-        // replaceNoneBlock(responseId)
-    
-    }
-    
 }
 export default UI
