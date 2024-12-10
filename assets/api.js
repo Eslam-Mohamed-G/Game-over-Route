@@ -1,5 +1,4 @@
 
-
 class GamesAPI {
 
     constructor(){
@@ -11,4 +10,16 @@ class GamesAPI {
             }
         };
     }
+
+    async fetchGames(category) {
+        try {
+            var response = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, this.options);
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching games:', error);
+            return [];
+        }
+    }
 }
+
+export default GamesAPI;
