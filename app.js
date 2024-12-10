@@ -14,4 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
         menu.classList.toggle("open")
     });
 
+    navLinks.forEach((link)=>{
+        link.addEventListener("click", () => {
+
+        })
+    });
 })
