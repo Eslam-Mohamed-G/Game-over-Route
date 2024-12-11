@@ -13,7 +13,11 @@ class GamesAPI {
 
     async fetchGames(category) {
         try {
+            var startTime = performance.now();
             var response = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, this.options);
+            var endTime = performance.now();
+            var time = endTime - startTime;
+            console.log(time);
             return await response.json();
         } catch (error) {
             console.error('Error fetching games:', error);
@@ -23,7 +27,11 @@ class GamesAPI {
 
     async fetchGameDetails(id){
         try {
+            var startTime = performance.now();
             var responseId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, this.options);
+            var endTime = performance.now();
+            var time = endTime - startTime;
+            console.log(time);
             return await responseId.json();
         } catch (error) {
             console.error('Error fetching games details:', error);
