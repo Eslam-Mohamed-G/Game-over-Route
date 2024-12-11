@@ -102,6 +102,16 @@ header {
     min-height: 100vh;
 }
 
+.loading {
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: #272b30e3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .loader {
     width: 100px;
     height: 100px;
