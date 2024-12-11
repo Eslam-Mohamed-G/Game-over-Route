@@ -20,7 +20,6 @@ class GamesAPI {
             var endTime = performance.now();
             var time = endTime - startTime;
             this.timer(time)
-            // console.log(time);
             return await response.json();
         } catch (error) {
             console.error('Error fetching games:', error);
@@ -35,7 +34,6 @@ class GamesAPI {
             var endTime = performance.now();
             var time = endTime - startTime;
             this.timer(time)
-            // console.log(time);
             return await responseId.json();
         } catch (error) {
             console.error('Error fetching games details:', error);
@@ -44,11 +42,11 @@ class GamesAPI {
     }
 
     timer(time) {
-        this.loading.classList.replace("d-none", "d-flex")
+        this.loading.classList.replace("d-none", "d-flex");
 
         setTimeout(() => {
-            this.loading.classList.replace("d-flex", "d-none")
-        }, time)
+            this.loading.classList.replace("d-flex", "d-none");
+        }, time);
     }
 }
 
