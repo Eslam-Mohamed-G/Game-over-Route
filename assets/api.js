@@ -9,6 +9,8 @@ class GamesAPI {
                 'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
             }
         };
+
+        this.loading = document.querySelector(".loading");
     }
 
     async fetchGames(category) {
@@ -17,7 +19,8 @@ class GamesAPI {
             var response = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/games?category=${category}`, this.options);
             var endTime = performance.now();
             var time = endTime - startTime;
-            console.log(time);
+            this.timer(time)
+            // console.log(time);
             return await response.json();
         } catch (error) {
             console.error('Error fetching games:', error);
@@ -31,12 +34,21 @@ class GamesAPI {
             var responseId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, this.options);
             var endTime = performance.now();
             var time = endTime - startTime;
-            console.log(time);
+            this.timer(time)
+            // console.log(time);
             return await responseId.json();
         } catch (error) {
             console.error('Error fetching games details:', error);
             return [];
         }
+    }
+
+    timer(time) {
+        this.loading.classList.replace("d-none", "d-flex")
+
+        setTimeout(() => {
+            this.loading.classList.replace("d-flex", "d-none")
+        }, time)
     }
 }
 
