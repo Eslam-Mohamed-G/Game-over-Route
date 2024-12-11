@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var toggler = document.querySelector(".navbar-toggler");
     var menu = document.querySelector("#navbarSupportedContent");
 
-    api.fetchGames("mmorpg").then((games) => {ui.displayGames(games)});
+    api.fetchGames("mmorpg").then(games => ui.displayGames(games, handleGameClick))
 
     toggler.addEventListener("click", ()=>{
         menu.classList.toggle("open")
@@ -22,8 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             var category = link.getAttribute("data-category");
             api.fetchGames(category).then( games => {
-                ui.displayGames(games);
+                ui.displayGames(games, handleGameClick);
             })
         })
     });
+    // Handle game click
+    function handleGameClick(gameId) {
+        api.fetchGameDetails(gameId).then(game => ui.displayGameDetails(game));
+    }
 })

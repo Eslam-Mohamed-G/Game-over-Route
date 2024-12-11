@@ -1,15 +1,14 @@
 class UI {
-    constructor(gameData) {
+    constructor() {
         this.gameContainer = document.getElementById("gameData");
         this.detailsContainer = document.getElementById("details");
-        this.btnClose = document.getElementById("btnClose");
     }
 
     clearContainer() {
         this.gameContainer.innerHTML = "";
     }
 
-    displayGames(games) {
+    displayGames(games, onGameClick) {
         this.clearContainer();
 
         games.forEach(element => {
@@ -45,60 +44,50 @@ class UI {
 
             this.gameContainer.appendChild(gameCard);
 
-            gameCard.addEventListener("click", async () => {
-                const options = {
-                    method: 'GET',
-                    headers: {
-                        'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-                        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-                    }
-                };
-                let id = gameCard.getAttribute("data-id")
-                var apiId = await fetch(`https://free-to-play-games-database.p.rapidapi.com/api/game?id=${id}`, options);
-                // console.log(id)
-                var responseId = await apiId.json();
-                // console.log(responseId)
-                this.replaceNoneBlock(responseId)
-            })
+            gameCard.addEventListener("click", () => onGameClick(element.id))
         });
     }
 
-    replaceNoneBlock(id) {
-        var details = document.getElementById("details");
-        // console.log(id)
-        var gameData = document.getElementById("gameData");
-        var btnClose = document.getElementById("btnClose");
-        details.classList.replace("d-none", "d-block")
-        gameData.classList.add("d-none");
+    displayGameDetails(id) {
+        this.detailsContainer.classList.replace("d-none", "d-block");
+        this.gameContainer.classList.add("d-none");
 
 
         var showDetails = document.createElement("div");
         showDetails.classList.add("container")
         showDetails.innerHTML =
-            `
-        <div class="row g-4" id="detailsContent">
-            <div class="col-md-4">
-                <img src=${id.thumbnail} class="w-100" alt="image details">
+        `
+            <div class="hstack justify-content-between">
+                <h1 class="text-center h3 py-4">Details Game</h1>
+                <button class="btn-close btn-close-white" id="btnClose"></button>
             </div>
 
-            <div class="col-md-8">
-                <h3>Title: ${id.title}</h3>
-                <p>Category: <span class="badge text-bg-info">${id.genre}</span> </p>
-                <p>Platform: <span class="badge text-bg-info">${id.platform}</span> </p>
-                <p>Status: <span class="badge text-bg-info">${id.status}</span> </p>
-                <p class="small">${id.description}</p>
-                <a class="btn btn-outline-warning" target="_blank"
-                    href=${id.game_url}>Show Game</a>
-            </div>
-        </div>
-    `
-        details.appendChild(showDetails)
+            <div class="row g-4" id="detailsContent">
+                <div class="col-md-4">
+                    <img src=${id.thumbnail} class="w-100" alt="image details">
+                </div>
 
-        btnClose.addEventListener("click", function () {
-            details.classList.replace("d-block", "d-none")
-            gameData.classList.remove("d-none");
-            showDetails.innerHTML = "";
-        })
+                <div class="col-md-8">
+                    <h3>Title: ${id.title}</h3>
+                    <p>Category: <span class="badge text-bg-info">${id.genre}</span> </p>
+                    <p>Platform: <span class="badge text-bg-info">${id.platform}</span> </p>
+                    <p>Status: <span class="badge text-bg-info">${id.status}</span> </p>
+                    <p class="small">${id.description}</p>
+                    <a class="btn btn-outline-warning" target="_blank"
+                        href=${id.game_url}>Show Game</a>
+                </div>
+            </div>
+        `;
+        this.detailsContainer.innerHTML = "";
+        this.detailsContainer.appendChild(showDetails);
+        this.btnClose = showDetails.querySelector("#btnClose");
+        this.btnClose.addEventListener("click", () => this.closeDetails());
+    }
+
+    closeDetails() {
+        this.detailsContainer.classList.replace("d-block", "d-none");
+        this.gameContainer.classList.remove("d-none");
+        this.detailsContainer.innerHTML = "";
     }
 }
 export default UI
