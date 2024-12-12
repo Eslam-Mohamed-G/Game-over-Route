@@ -31,3 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
         api.fetchGameDetails(gameId).then(game => ui.displayGameDetails(game));
     }
 })
+
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector(".navbar");
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    if(scrollTop > 200){
+        navbar.classList.replace("position-absolute", "position-sticky");
+        navbar.classList.remove("start-50", "translate-middle");
+        navbar.classList.add("top-0")
+    }else {
+        navbar.classList.replace("position-sticky", "position-absolute");
+        navbar.classList.add("start-50", "translate-middle");
+        navbar.classList.remove("top-0")
+    }
+});
