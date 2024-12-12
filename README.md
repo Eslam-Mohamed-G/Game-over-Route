@@ -37,11 +37,13 @@ The app fetches data from the **Free-to-Play Games Database API** using `fetch` 
 - Fetching games by category.
 - Fetching detailed information for a specific game.
 
+
 ### 2. User Interface (UI)
 The `ui.js` file defines methods to:
 - Display a list of games in cards format.
 - Render detailed information about a selected game.
 - Manage UI interactions like showing and hiding sections.
+
 
 ### 3. Main Logic
 The `app.js` file coordinates the API and UI:
@@ -52,6 +54,8 @@ The `app.js` file coordinates the API and UI:
 ---
 
 ## Video Demo
+![Design preview for the Time tracking dashboard coding challenge](./assets/image/preview_1.png)
+![Design preview for the Time tracking dashboard coding challenge](./assets/image/preview_3.png)
 
 Watch the video demonstration here:
 [Demo Video Link](https://youtu.be/7Rj1XLOfNbE) <!-- Replace with actual link -->
