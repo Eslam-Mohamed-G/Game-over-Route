@@ -31,9 +31,10 @@ header {
 .navbar {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.4);
     background-color: var(--navbar-color);
-    top: calc(100% - 35px) !important;
+    /* top: calc(220px - 32px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%); */
+    margin: auto; 
 }
 
 .navbar-brand, .navbar-brand:hover {
