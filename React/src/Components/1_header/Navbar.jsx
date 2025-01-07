@@ -33,7 +33,10 @@ function Navbar() {
 
     useEffect(() => {
         fetchGames();
-    }, []);
+    }, [category]);
+    const handleCategoryClick = (newCategory)=>{
+        setCategory(newCategory);
+    };
     return (
         <>
             <div className='header'></div>
