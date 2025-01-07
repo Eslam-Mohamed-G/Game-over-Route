@@ -6,13 +6,14 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
 import { useEffect } from 'react';
+import { useState } from 'react';
 
 function Navbar() {
     const options = {
         method: 'GET',
         url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
         params: {
-            category: 'shooter'
+            category: 'mmorpg'
         },
         headers: {
             'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
@@ -20,13 +21,17 @@ function Navbar() {
         }
     };
     
-    async function gamesAPI() {
-        const response = await axios.request(options);
-        console.log(response.data);
+    async function fetchGames() {
+        try {
+            const response = await axios.request(options);
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error fetching games:", error);
+        }
     }
 
     useEffect(() => {
-        gamesAPI();
+        fetchGames();
     }, []);
     return (
         <>
