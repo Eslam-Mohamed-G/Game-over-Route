@@ -1,12 +1,10 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import "./style.css"
 import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import "./style.css"
 
 function Navbar() {
     const [category, setCategory] = useState("mmorpg");
@@ -49,25 +47,13 @@ function Navbar() {
                         <span className="navbar-toggler-icon" />
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('shooter')}>shooter</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('sailing')}>sailing</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('permadeath')}>permadeath</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('superhero')}>superhero</NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('pixel')}>pixel</NavLink>
-                            </li>
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</li>
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('shooter')}>shooter</li>
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('sailing')}>sailing </li>
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('permadeath')}>permadeath</li>
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('superhero')}>superhero</li>
+                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('pixel')}>pixel</li>
                         </ul>
                     </div>
                 </div>
