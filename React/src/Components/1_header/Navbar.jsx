@@ -48,12 +48,12 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</li>
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('shooter')}>shooter</li>
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('sailing')}>sailing </li>
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('permadeath')}>permadeath</li>
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('superhero')}>superhero</li>
-                            <li className="nav-item text-uppercase" onClick={()=>handleCategoryClick('pixel')}>pixel</li>
+                            <li className={`nav-item text-uppercase ${category === 'mmorpg' ?'active':''}`} onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</li>
+                            <li className={`nav-item text-uppercase ${category === 'shooter' ?'active':''}`} onClick={()=>handleCategoryClick('shooter')}>shooter</li>
+                            <li className={`nav-item text-uppercase ${category === 'sailing' ?'active':''}`} onClick={()=>handleCategoryClick('sailing')}>sailing </li>
+                            <li className={`nav-item text-uppercase ${category === 'permadeath' ?'active':''}`} onClick={()=>handleCategoryClick('permadeath')}>permadeath</li>
+                            <li className={`nav-item text-uppercase ${category === 'superhero' ?'active':''}`} onClick={()=>handleCategoryClick('superhero')}>superhero</li>
+                            <li className={`nav-item text-uppercase ${category === 'pixel' ?'active':''}`} onClick={()=>handleCategoryClick('pixel')}>pixel</li>
                         </ul>
                     </div>
                 </div>
