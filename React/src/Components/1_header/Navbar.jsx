@@ -9,11 +9,12 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 
 function Navbar() {
+    const [category, setCategory] = useState("mmorpg");
     const options = {
         method: 'GET',
         url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
         params: {
-            category: 'mmorpg'
+            category: category
         },
         headers: {
             'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
