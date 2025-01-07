@@ -8,26 +8,7 @@ import logo from '../../assets/logo-sm.png';
 import { useEffect } from 'react';
 
 function Navbar() {
-    const options = {
-        method: 'GET',
-        url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-        params: {
-            category: 'shooter'
-        },
-        headers: {
-            'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-            'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-        }
-    };
-    
-    async function gamesAPI() {
-        const response = await axios.request(options);
-        console.log(response.data);
-    }
 
-    useEffect(() => {
-        gamesAPI();
-    }, []);
     return (
         <>
             <div className='header'></div>
