@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link, NavLink } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
@@ -26,7 +25,6 @@ function Navbar() {
         try {
             const response = await axios.request(options);
             setGameUI(response.data);
-            console.log(response.data);
         } catch (error) {
             console.error("Error fetching games:", error);
         }
@@ -63,13 +61,7 @@ function Navbar() {
             </div>
 
             {/* to showe games */}
-            <div className="container my-5 pt-4">
-                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
-                    {gameUI.map(item=>(
-                        <Games key={item.id} id={item.id} thumbnail={item.thumbnail} title={item.title} short_description={item.short_description} genre={item.genre} platform={item.platform} />
-                    ))}
-                </div>
-            </div>
+            <Games game={gameUI}/>
         </>
     )
 }
