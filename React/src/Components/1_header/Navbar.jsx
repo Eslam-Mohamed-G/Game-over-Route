@@ -5,9 +5,11 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
 import "./style.css"
+import Games from '../2_games/Games';
 
 function Navbar() {
     const [category, setCategory] = useState("mmorpg");
+    const [gameUI, setGameUI] = useState([]);
     const options = {
         method: 'GET',
         url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
@@ -23,6 +25,7 @@ function Navbar() {
     async function fetchGames() {
         try {
             const response = await axios.request(options);
+            setGameUI(response.data);
             console.log(response.data);
         } catch (error) {
             console.error("Error fetching games:", error);
@@ -56,6 +59,15 @@ function Navbar() {
                             <li className={`nav-item text-uppercase ${category === 'pixel' ?'active':''}`} onClick={()=>handleCategoryClick('pixel')}>pixel</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+
+            {/* to showe games */}
+            <div className="container my-5 pt-4">
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
+                    {gameUI.map(item=>(
+                        <Games key={item.id} id={item.id} thumbnail={item.thumbnail} title={item.title} short_description={item.short_description} genre={item.genre} platform={item.platform} />
+                    ))}
                 </div>
             </div>
         </>
