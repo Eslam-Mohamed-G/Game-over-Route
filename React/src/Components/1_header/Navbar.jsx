@@ -51,22 +51,22 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
-                                <NavLink role="button" className="nav-link text-uppercase active" aria-current="page" data-category="mmorpg">mmorpg</NavLink>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a role="button" className="nav-link text-uppercase" data-category="shooter">shooter</a>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('shooter')}>shooter</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a role="button" className="nav-link text-uppercase" data-category="sailing">sailing</a>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('sailing')}>sailing</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a role="button" className="nav-link text-uppercase" data-category="permadeath">permadeath</a>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('permadeath')}>permadeath</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a role="button" className="nav-link text-uppercase" data-category="superhero">superhero</a>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('superhero')}>superhero</NavLink>
                             </li>
                             <li className="nav-item">
-                                <a role="button" className="nav-link text-uppercase" data-category="pixel">pixel</a>
+                                <NavLink role="button" className="nav-link text-uppercase" onClick={()=>handleCategoryClick('pixel')}>pixel</NavLink>
                             </li>
                         </ul>
                     </div>
