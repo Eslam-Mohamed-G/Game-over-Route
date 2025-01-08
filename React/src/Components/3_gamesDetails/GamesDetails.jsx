@@ -18,7 +18,7 @@ function GamesDetails() {
         try {
             const response = await axios.request(options);
             setDetails(response.data)
-            console.log(response.data);
+            // console.log(response.data);
         } catch (error) {
             console.error("error", error);
         }
