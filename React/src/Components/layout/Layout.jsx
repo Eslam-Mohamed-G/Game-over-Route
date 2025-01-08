@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Layout() {
   return (
     <>
-      <Navbar/>
       <Outlet/>
     </>
   )
