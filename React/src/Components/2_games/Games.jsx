@@ -49,7 +49,7 @@ function Games({ category }) {
           <div
             className='col'
             key={element.id}
-            onClick={() => navigate(`/game/${element.id}`, { state: { category } })}
+            onClick={() => navigate(`/${element.title}/${element.id}`, { state: { category } })}
             style={{ cursor: 'pointer' }}
           >
             <div className="card h-100 bg-transparent">

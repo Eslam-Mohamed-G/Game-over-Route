@@ -46,6 +46,7 @@ body {
     color: var(--header-color);
     font-weight: 400;
     font-size: 12px;
+    padding-left: 0px;
     cursor: pointer;
     transition: all ease-in-out .3s;
 }
@@ -97,4 +98,14 @@ body {
 @keyframes rotation{
     0%{transform: rotate(0deg);}
     100%{transform: rotate(360deg);}
+}
+@media screen and (max-width: 996px) {
+    .navbar-nav .nav-item .nav-link {
+        color: var(--header-color);
+        font-weight: 400;
+        font-size: 12px;
+        padding-left: 40px;
+        cursor: pointer;
+        transition: all ease-in-out .3s;
+    }
 }

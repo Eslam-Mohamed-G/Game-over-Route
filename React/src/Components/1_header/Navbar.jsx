@@ -22,7 +22,7 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                             <li className="nav-item">
-                                <NavLink to='/' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>mmorpg</NavLink>
+                                <NavLink to='/mmorpg' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>mmorpg</NavLink>
                             </li>
                             <li className="nav-item">
                                 <NavLink to='/shooter' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>shooter</NavLink>
