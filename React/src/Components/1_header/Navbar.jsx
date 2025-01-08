@@ -1,45 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
 import "./style.css"
 import Games from '../2_games/Games';
+import { NavLink } from 'react-router-dom';
 
 function Navbar() {
-    const [category, setCategory] = useState("mmorpg");
-    const [gameUI, setGameUI] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const options = {
-        method: 'GET',
-        url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-        params: {
-            category: category
-        },
-        headers: {
-            'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-            'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com'
-        }
-    };
     
-    async function fetchGames() {
-        setLoading(true);
-        try {
-            const response = await axios.request(options);
-            setGameUI(response.data);
-        } catch (error) {
-            console.error("Error fetching games:", error);
-        } finally{
-            setLoading(false);
-        }
-    }
-
-    useEffect(() => {
-        fetchGames();
-    }, [category]);
-    const handleCategoryClick = (newCategory)=>{
-        setCategory(newCategory);
-    };
     return (
         <>
             <div className='header'></div>
@@ -53,25 +21,28 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
-                            <li className={`nav-item text-uppercase ${category === 'mmorpg' ?'active':''}`} onClick={()=>handleCategoryClick('mmorpg')}>mmorpg</li>
-                            <li className={`nav-item text-uppercase ${category === 'shooter' ?'active':''}`} onClick={()=>handleCategoryClick('shooter')}>shooter</li>
-                            <li className={`nav-item text-uppercase ${category === 'sailing' ?'active':''}`} onClick={()=>handleCategoryClick('sailing')}>sailing </li>
-                            <li className={`nav-item text-uppercase ${category === 'permadeath' ?'active':''}`} onClick={()=>handleCategoryClick('permadeath')}>permadeath</li>
-                            <li className={`nav-item text-uppercase ${category === 'superhero' ?'active':''}`} onClick={()=>handleCategoryClick('superhero')}>superhero</li>
-                            <li className={`nav-item text-uppercase ${category === 'pixel' ?'active':''}`} onClick={()=>handleCategoryClick('pixel')}>pixel</li>
+                            <li className="nav-item">
+                                <NavLink to='/' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>mmorpg</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/shooter' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>shooter</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/sailing' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>sailing</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/permadeath' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>permadeath</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/superhero' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>superhero</NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink to='/pixel' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>pixel</NavLink>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-            {/* to showe games */}
-            {loading && (
-                <div className='loading'>
-                    <div className='loader'></div>
-                </div>
-            )}
-
-            {!loading && <Games game={gameUI}/>}
         </>
     )
 }
