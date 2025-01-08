@@ -43,12 +43,10 @@ function GamesDetails() {
         );
     }
 
-    if (!details) {
-        return <div>No details found.</div>; // رسالة إذا لم يتم العثور على تفاصيل
-    }
+    if (!details) {return <div>No details found.</div>; }
 
     return (
-        <div className="container text-white">
+        <div className="container text-white pb-5">
             <div className="hstack justify-content-between">
                 <h1 className="text-center h3 py-4">Details Game</h1>
                 <NavLink className="btn-close btn-close-white" to={`/${category}`} />
