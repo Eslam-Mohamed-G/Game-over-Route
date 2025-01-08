@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
@@ -7,11 +7,26 @@ import Games from '../2_games/Games';
 import { NavLink } from 'react-router-dom';
 
 function Navbar() {
+    const [isSticky, setIsSticky] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = ()=>{
+            if(window.pageYOffset > 190){
+                setIsSticky(true);
+            }else {
+                setIsSticky(false);
+            }
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
     
     return (
         <>
             <div className='header'></div>
-            <div className='navbar navbar-expand-lg'>
+            <div className={`navbar navbar-expand-lg z-3 p-0 ${isSticky ? 'sticky' : ''}`}>
                 <div className="container container-fluid rounded-4 px-3 py-1">
                     <h5 className="navbar-brand mb-0 text-uppercase d-flex flex-row align-items-center gap-1">
                         <img src={logo} alt="logo photo" style={{ maxWidth: 40 }} /> Game Reviews
