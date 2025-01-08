@@ -9,6 +9,7 @@ import Games from '../2_games/Games';
 function Navbar() {
     const [category, setCategory] = useState("mmorpg");
     const [gameUI, setGameUI] = useState([]);
+    const [loading, setLoading] = useState(false);
     const options = {
         method: 'GET',
         url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
@@ -22,11 +23,14 @@ function Navbar() {
     };
     
     async function fetchGames() {
+        setLoading(true);
         try {
             const response = await axios.request(options);
             setGameUI(response.data);
         } catch (error) {
             console.error("Error fetching games:", error);
+        } finally{
+            setLoading(false);
         }
     }
 
@@ -61,7 +65,13 @@ function Navbar() {
             </div>
 
             {/* to showe games */}
-            <Games game={gameUI}/>
+            {loading && (
+                <div className='loading'>
+                    <div className='loader'></div>
+                </div>
+            )}
+
+            {!loading && <Games game={gameUI}/>}
         </>
     )
 }
