@@ -16,9 +16,9 @@ const routes = createBrowserRouter([
       { path: 'permadeath', element: <Games category="permadeath" /> },
       { path: 'superhero', element: <Games category="superhero" /> },
       { path: 'pixel', element: <Games category="pixel" /> },
-      { path: 'game/:id', element: <GamesDetails /> },
     ],
   },
+  { path: 'game/:id', element: <GamesDetails /> },
 ]);
 function App() {
   return (
