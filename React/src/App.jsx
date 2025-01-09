@@ -6,6 +6,7 @@ import Games from './Components/2_games/Games';
 import Layout from './Components/layout/Layout';
 import GamesDetails from './Components/3_gamesDetails/GamesDetails';
 import Navbar from './Components/1_header/Navbar';
+import Login from './Components/login/Login';
 const routes = createBrowserRouter([
   { path: '/', element: <Layout />,
     children: [
@@ -19,6 +20,7 @@ const routes = createBrowserRouter([
     ],
   },
   { path: '/:game/:id', element: <GamesDetails /> },
+  { path: '/login', element: <Login /> },
 ]);
 function App() {
   return (
