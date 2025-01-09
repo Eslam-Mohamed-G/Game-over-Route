@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState  } from 'react';
+import React, { createContext, useCallback, useEffect, useState  } from 'react';
 import axios from "axios";
 
 export const dataContext = createContext();
@@ -18,7 +18,7 @@ function StoreAPI({ children }) {
         },
     };
 
-    const fetchGames = async () => {
+    const fetchGames = useCallback(async () => {
         setLoading(true);
         try {
             const response = await axios.request(options);
@@ -28,11 +28,11 @@ function StoreAPI({ children }) {
         } finally {
             setLoading(false);
         }
-    };
+    }, [category]);
 
     useEffect(() => {
         fetchGames();
-    }, [category]);
+    }, [fetchGames]);
 
     return (
         <div>

@@ -1,38 +1,43 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import "./style.css";
 import { useNavigate } from 'react-router-dom';
+import { dataContext } from '../context/StoreAPI';
 
-function Games({ category }) {
+
+// function Games({ category }) {
+  // const navigate = useNavigate();
+  // const [gameUI, setGameUI] = useState([]);
+  // const [loading, setLoading] = useState(false);
+
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+  //   params: { category: category },
+  //   headers: {
+  //     'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
+  //     'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
+  //   },
+  // };
+
+  // const fetchGames = async () => {
+  //   setLoading(true);
+  //   try {
+  //     const response = await axios.request(options);
+  //     setGameUI(response.data);
+  //   } catch (error) {
+  //     console.error("Error fetching games:", error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchGames();
+  // }, [category]);
+function Games() {
+  const {gameUI, loading, category, setCategory} = useContext(dataContext);
   const navigate = useNavigate();
-  const [gameUI, setGameUI] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const options = {
-    method: 'GET',
-    url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-    params: { category: category },
-    headers: {
-      'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-      'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
-    },
-  };
-
-  const fetchGames = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.request(options);
-      setGameUI(response.data);
-    } catch (error) {
-      console.error("Error fetching games:", error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchGames();
-  }, [category]);
 
   if (loading) {
     return (
@@ -77,4 +82,4 @@ function Games({ category }) {
   );
 }
 
-export default React.memo(Games); // منع إعادة التصيير غير الضروري
+export default React.memo(Games);    

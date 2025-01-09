@@ -1,27 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import logo from '../../assets/logo-sm.png';
-import "./style.css"
-import Games from '../2_games/Games';
 import { NavLink } from 'react-router-dom';
+import { useCallback } from 'react';
+import "./style.css";
 
 function Navbar() {
     const [isSticky, setIsSticky] = useState(false);
+    const { setCategory } = useContext(dataContext);
 
+    const handleScroll = useCallback(()=>{
+        if(window.pageYOffset > 190){
+            setIsSticky(true);
+        }else {
+            setIsSticky(false);
+        }
+    }, []);
     useEffect(() => {
-        const handleScroll = ()=>{
-            if(window.pageYOffset > 190){
-                setIsSticky(true);
-            }else {
-                setIsSticky(false);
-            }
-        };
         window.addEventListener('scroll', handleScroll);
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);
+    }, [handleScroll]);
     
     return (
         <>
@@ -37,22 +39,22 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                             <li className="nav-item">
-                                <NavLink to='/mmorpg' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>mmorpg</NavLink>
+                                <NavLink to='/mmorpg' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('mmorpg')}>mmorpg</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/shooter' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>shooter</NavLink>
+                                <NavLink to='/shooter' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('shooter')}>shooter</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/sailing' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>sailing</NavLink>
+                                <NavLink to='/sailing' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('sailing')}>sailing</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/permadeath' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>permadeath</NavLink>
+                                <NavLink to='/permadeath' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('permadeath')}>permadeath</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/superhero' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>superhero</NavLink>
+                                <NavLink to='/superhero' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('superhero')}>superhero</NavLink>
                             </li>
                             <li className="nav-item">
-                                <NavLink to='/pixel' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`}>pixel</NavLink>
+                                <NavLink to='/pixel' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('pixel')}>pixel</NavLink>
                             </li>
                         </ul>
                     </div>
