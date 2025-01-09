@@ -1,40 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useLocation, NavLink } from 'react-router-dom';
+import React, { useContext} from 'react';
+import {  NavLink } from 'react-router-dom';
+import { dataContext } from '../context/StoreAPI';
 
 function GamesDetails() {
-    const { id } = useParams();
-    const location = useLocation(); // استخدام useLocation بشكل صحيح
-    const category = location.state?.category || 'mmorpg'; // قيمة افتراضية إذا لم يتم تمرير category
-    const [details, setDetails] = useState(null); // تهيئة details كـ null
-    const [loading, setLoading] = useState(false);
-
-    const options = {
-        method: 'GET',
-        url: 'https://free-to-play-games-database.p.rapidapi.com/api/game',
-        params: { id: id },
-        headers: {
-            'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-            'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
-        },
-    };
-
-    const fetchDetails = async () => {
-        setLoading(true);
-        try {
-            const response = await axios.request(options);
-            setDetails(response.data);
-        } catch (error) {
-            console.error("Error fetching game details:", error);
-        } finally {
-            setLoading(false);
-        }
-    };
-
-    useEffect(() => {
-        fetchDetails();
-    }, [id]);
-
+    const { details, loading, category} = useContext(dataContext);
     if (loading) {
         return (
             <div className='loading'>
@@ -68,4 +37,4 @@ function GamesDetails() {
     );
 }
 
-export default React.memo(GamesDetails); // منع إعادة التصيير غير الضروري
+export default React.memo(GamesDetails);

@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-import axios from 'axios';
-import "./style.css";
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
+import "./style.css";
 
 
 // function Games({ category }) {
@@ -36,7 +35,7 @@ import { dataContext } from '../context/StoreAPI';
   //   fetchGames();
   // }, [category]);
 function Games() {
-  const {gameUI, loading, category, setCategory} = useContext(dataContext);
+  const {gameUI, loading, setIdGame} = useContext(dataContext);
   const navigate = useNavigate();
 
   if (loading) {
@@ -54,7 +53,10 @@ function Games() {
           <div
             className='col'
             key={element.id}
-            onClick={() => navigate(`/${element.title}/${element.id}`, { state: { category } })}
+            onClick={() => {
+              navigate(`/${element.title}/${element.id}`);
+              setIdGame(element.id);
+            }}
             style={{ cursor: 'pointer' }}
           >
             <div className="card h-100 bg-transparent">
