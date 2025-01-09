@@ -1,20 +1,20 @@
-.card{
+.games .card{
     transition: all ease-in-out .3s;
 }
-.card:hover{
+.games .card:hover{
     scale: 1.04;
 }
-.card .card-img-top, .card .text-bg-primary{
+.games .card .card-img-top, .card .text-bg-primary{
     opacity: .5;
     transition: all ease-in-out .3s;
 
 }
-.card:has(.card-body:hover) .card-img-top,
-.card:has(.card-body:hover) .text-bg-primary{
+.games .card:has(.card-body:hover) .card-img-top,
+.games .card:has(.card-body:hover) .text-bg-primary{
     opacity: 1;
 }
 
-.card-text{
+.games .card-text{
     color: var(--input-color);
     display: -webkit-box; 
     -webkit-box-orient: vertical;
@@ -24,10 +24,10 @@
     max-height: calc(1.5em * 3); 
 }
 
-.hstack h6{
+.games .hstack h6{
     color: var(--header-color);
 }
 
-.card-footer span{
+.games .card-footer span{
     background-color: var(--bg-span-color);
 }

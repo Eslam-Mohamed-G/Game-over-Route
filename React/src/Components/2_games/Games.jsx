@@ -47,7 +47,7 @@ function Games() {
   }
 
   return (
-    <div className="container pt-4">
+    <div className="container games pt-4">
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
         {gameUI?.map((element) => (
           <div
