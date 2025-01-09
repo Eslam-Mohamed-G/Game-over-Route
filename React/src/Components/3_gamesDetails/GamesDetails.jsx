@@ -1,11 +1,14 @@
-import React, { useContext} from 'react';
-import {  NavLink } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import { useState } from 'react';
 
 function GamesDetails() {
-    const { details, loading, category} = useContext(dataContext);
+    const { details, loading, category } = useContext(dataContext);
+    const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+
     if (loading) {
         return (
             <div className='loading'>
@@ -15,6 +18,10 @@ function GamesDetails() {
     }
 
     if (!details) {return <div>No details found.</div>; }
+    
+    // التحقق من وجود الفيديو
+    const videoUrl = `https://www.freetogame.com/g/${details.id}/videoplayback.webm`;
+    const hasVideo = true; // يمكنك استبدال هذا بالتحقق الفعلي باستخدام axios.head كما في المثال السابق
 
     return (
         <div className="container text-white pb-5">
@@ -24,16 +31,22 @@ function GamesDetails() {
             </div>
 
             <div className="row">
-                <div className="col-md-4  overflow-x-hidden z-3">
+                <div className="col-md-4 overflow-x-hidden z-3">
                     <div className="card bg-transparent opacity-100">
-                        <img src={details.thumbnail} className="card-img-top w-100" alt="image details" />
+                        {!isVideoPlaying && ( <img src={details.thumbnail} className="card-img-top w-100" alt="image details" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}/>)}
+                        {hasVideo && (
+                            <video className="featuredvideo" loop preload="none" muted autoPlay onPlay={()=>setIsVideoPlaying(true)}style={{ position: 'relative', zIndex: 0 }}>
+                                <source src={videoUrl} type="video/webm" />
+                                Your browser does not support the video tag.
+                            </video>
+                        )}
                         <div className="card-body bg-transparent text-white">
                             <p>{details.short_description}</p>
                         </div>
 
                         <div className="card-footer d-flex gap-3">
                             <span className="badge text-bg-info px-3 align-content-center flex-grow-0">Free</span>
-                            <a className="btn btn-outline-warning flex-grow-1" target="_blank" href={details.game_url}>Show Game</a>
+                            <a className="btn btn-outline-warning flex-grow-1" target="_blank" rel="noopener noreferrer" href={details.game_url}>Show Game</a>
                         </div>
                     </div>
                 </div>
@@ -46,8 +59,8 @@ function GamesDetails() {
 
                     <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
-                            {details.screenshots.map(img => (
-                                <div className="carousel-item active rounded overflow-hidden">
+                            {details.screenshots.map((img, index) => (
+                                <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={img.id}>
                                     <img src={img.image} className="d-block w-100" alt="miniImage" />
                                 </div>
                             ))}
@@ -62,33 +75,17 @@ function GamesDetails() {
                         </button>
                     </div>
 
-
                     <div className='systemRequirements'>
                         {details.minimum_system_requirements ? (
                             <div className="text-left" key={details.id}>
-                                <h4>
-                                    <span> Graphics : </span>
-                                    {details.minimum_system_requirements.graphics}
-                                </h4>
-                                <h4>
-                                    <span> Memory : </span>
-                                    {details.minimum_system_requirements.memory}
-                                </h4>
-                                <h4>
-                                    <span> Os : </span>
-                                    {details.minimum_system_requirements.os}
-                                </h4>
-                                <h4>
-                                    <span> Processor : </span>
-                                    {details.minimum_system_requirements.processor}
-                                </h4>
-                                <h4>
-                                    <span> Storage : </span>
-                                    {details.minimum_system_requirements.storage}
-                                </h4>
+                                <h4><span>Graphics:</span> {details.minimum_system_requirements.graphics}</h4>
+                                <h4><span>Memory:</span> {details.minimum_system_requirements.memory}</h4>
+                                <h4><span>OS:</span> {details.minimum_system_requirements.os}</h4>
+                                <h4><span>Processor:</span> {details.minimum_system_requirements.processor}</h4>
+                                <h4><span>Storage:</span> {details.minimum_system_requirements.storage}</h4>
                             </div>
                         ) : (
-                            ""
+                            <p>No system requirements available.</p>
                         )}
                     </div>
                 </div>

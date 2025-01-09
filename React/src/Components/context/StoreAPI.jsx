@@ -58,7 +58,7 @@ function StoreAPI({ children }) {
                 params: { id: idGame },
                 headers: headers,
             });
-            console.log(response.data);
+            // console.log(response.data);
             setDetails(response.data);
         } catch (error) {
             console.error("Error fetching game details:", error);
@@ -74,6 +74,23 @@ function StoreAPI({ children }) {
         }
     }, [fetchDetails, idGame]);
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
+
+    const fetchAPI = async () => {
+        try {
+            const options = {
+                method: 'GET',
+                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+                headers: headers
+            };
+            const response = await axios.request(options);
+            console.log(response.data);
+        } catch (error) {
+            console.error("fetchingAPI", error);
+        }
+    }
+    useEffect(() => {
+        fetchAPI()
+    }, []);
     return (
         <div>
             <dataContext.Provider value={{gameUI, loading, category, setCategory, details, setIdGame}}>
