@@ -7,15 +7,16 @@ function StoreAPI({ children }) {
     const [gameUI, setGameUI] = useState([]);
     const [loading, setLoading] = useState(false);
     const [category, setCategory] = useState("mmorpg");
+    const headers = {
+        'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
+        'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
+    }
 
     const options = {
         method: 'GET',
         url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
         params: { category: category },
-        headers: {
-            'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-            'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
-        },
+        headers: headers,
     };
 
     const fetchGames = useCallback(async () => {
@@ -34,7 +35,7 @@ function StoreAPI({ children }) {
         fetchGames();
     }, [fetchGames]);
     
-// GamesDetails  GamesDetails   GamesDetails   GamesDetails 
+    // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
     const [idGame, setIdGame] = useState(null);
     const [details, setDetails] = useState(null);
 
@@ -46,10 +47,7 @@ function StoreAPI({ children }) {
                 method: 'GET',
                 url: 'https://free-to-play-games-database.p.rapidapi.com/api/game',
                 params: { id: idGame },
-                headers: {
-                    'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
-                    'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
-                },
+                headers: headers,
             });
             setDetails(response.data);
         } catch (error) {
@@ -62,7 +60,7 @@ function StoreAPI({ children }) {
     useEffect(() => {
         fetchDetails();
     }, [fetchDetails]);
-
+    // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
     return (
         <div>
             <dataContext.Provider value={{gameUI, loading, category, setCategory, details, setIdGame}}>
