@@ -39,7 +39,6 @@ function StoreAPI({ children }) {
             <dataContext.Provider value={{gameUI, loading, category, setCategory}}>
                 {children}
             </dataContext.Provider>
-
         </div>
     )
 }
