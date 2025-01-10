@@ -19,10 +19,8 @@ function GamesDetails() {
 
     if (!details) {return <div>No details found.</div>; }
     
-    // التحقق من وجود الفيديو
     const videoUrl = `https://www.freetogame.com/g/${details.id}/videoplayback.webm`;
-    const hasVideo = true; // يمكنك استبدال هذا بالتحقق الفعلي باستخدام axios.head كما في المثال السابق
-
+    const hasVideo = true;
     return (
         <div className="container text-white pb-5">
             <div className="hstack py-4 justify-content-between">
@@ -32,7 +30,7 @@ function GamesDetails() {
 
             <div className="row">
                 <div className="col-md-4 overflow-x-hidden z-3">
-                    <div className="card bg-transparent opacity-100">
+                    <div className="card bg-transparent overflow-hidden opacity-100">
                         {!isVideoPlaying && ( <img src={details.thumbnail} className="card-img-top w-100" alt="image details" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}/>)}
                         {hasVideo && (
                             <video className="featuredvideo" loop preload="none" muted autoPlay onPlay={()=>setIsVideoPlaying(true)}style={{ position: 'relative', zIndex: 0 }}>
@@ -40,7 +38,7 @@ function GamesDetails() {
                                 Your browser does not support the video tag.
                             </video>
                         )}
-                        <div className="card-body bg-transparent text-white">
+                        <div className="card-body bg-transparent text-white pt-5">
                             <p>{details.short_description}</p>
                         </div>
 
