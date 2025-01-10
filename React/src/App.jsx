@@ -12,6 +12,7 @@ const routes = createBrowserRouter([
   { path: '/', element: <Layout />,
     children: [
       { index: true, element: <Home/> },
+      { path: 'pc', element: <Games/> },
       { path: 'card', element: <Games/> },
       { path: 'pixel', element: <Games/> },
       { path: 'sports', element: <Games/> },
@@ -19,6 +20,7 @@ const routes = createBrowserRouter([
       { path: 'sci-fi', element: <Games/> },
       { path: 'shooter', element: <Games/> },
       { path: 'sailing', element: <Games/> },
+      { path: 'browser', element: <Games/> },
       { path: 'strategy', element: <Games/> },
       { path: 'superhero', element: <Games/> },
       { path: 'permadeath', element: <Games/> },

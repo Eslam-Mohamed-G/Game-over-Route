@@ -102,7 +102,6 @@ function StoreAPI({ children }) {
 
 // games by plateform   games by plateform  games by plateform  games by plateform
     const [platform, setPlatform] = useState(null);
-    const [gamesPlatform, setGamesPlatform] = useState([]);
     const fetchPlatform = useCallback(async()=>{
         setLoading(true);
         try {
