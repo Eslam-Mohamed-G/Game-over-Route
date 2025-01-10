@@ -13,8 +13,8 @@ function Home() {
     useEffect(() => {
         if(counter < 400){
             const interval = setInterval(()=>{
-                setCounter(prevCounter => prevCounter+1);
-            },5);
+                setCounter( prevCounter => prevCounter + 1 );
+            },2);
             return () => {
                 clearInterval(interval)
             }
@@ -32,7 +32,7 @@ function Home() {
         <div className='home'>
             <header>
                 <h1>Discover the best <span>free-to-play</span> games!</h1>
-                <h2>more than <span>{counter}+</span> games</h2>
+                <h2>more than <span>+{counter}</span> games</h2>
             </header>
             <div className="container games pt-4">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">

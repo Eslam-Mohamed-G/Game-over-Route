@@ -24,11 +24,10 @@
     margin-top: 58px;
     min-height: 300px;
     border-bottom: 1px solid rgb(17, 18, 21);
-}
-.home > header:nth-child(1) > h1{
     color: var(--text-color);
     text-shadow: -1px -1px 0 rgba(0,0,0,.3);
 }
-.home > header:nth-child(1) > h1:nth-child(1) > span:nth-child(1){
+
+.home > header span{
     color: var(--span-color) !important;
 }
