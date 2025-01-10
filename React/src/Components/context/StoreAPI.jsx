@@ -27,11 +27,11 @@ function StoreAPI({ children }) {
         try {
             const response = await axios.request(options);
             setGameUI(response.data);
-            const games = response.data
-            const platform = [...new Set(games.map(game => game.platform))];
-            console.log('platform:', platform);
+            // const games = response.data
+            // const platform = [...new Set(games.map(game => game.platform))];
+            // console.log('platform:', platform);
         } catch (error) {
-            console.error("Error fetching games:", error);
+            console.error("Error fetching games Games Component:", error);
         } finally {
             setLoading(false);
         }
@@ -89,7 +89,7 @@ function StoreAPI({ children }) {
             };
             const response = await axios.request(options);
             setAllGameUI(response.data);
-            console.log(response.data);
+            // console.log(response.data);
         } catch (error) {
             console.error("all games error:-", error);
         }
@@ -99,9 +99,39 @@ function StoreAPI({ children }) {
     }, []);
 
 // all games in Home component   all games in Home component  all games in Home component  all games in Home component
+
+// games by plateform   games by plateform  games by plateform  games by plateform
+    const [platform, setPlatform] = useState(null);
+    const [gamesPlatform, setGamesPlatform] = useState([]);
+    const fetchPlatform = useCallback(async()=>{
+        setLoading(true);
+        try {
+            const options = {
+                method: 'GET',
+                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+                params: {platform: platform},
+                headers: headers
+            };
+            const response = await axios.request(options);
+            setGameUI(response.data);
+            console.log('platform data',response.data);
+        } catch (error) {
+            console.error('platform error:-', error);
+        } finally{
+            setLoading(false);
+        }
+    }, [platform]);
+
+    useEffect(() => {
+        if (platform) {
+            fetchPlatform();
+        }
+    }, [platform, fetchPlatform]);
+
+// games by plateform   games by plateform  games by plateform  games by plateform
     return (
         <div>
-            <dataContext.Provider value={{ allGames, gameUI, loading, category, setCategory, details, setIdGame}}>
+            <dataContext.Provider value={{ allGames, gameUI, loading, category, setCategory, details, setIdGame, setPlatform }}>
                 {children}
             </dataContext.Provider>
         </div>

@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import "./style.css";
 
 function Navbar() {
-    const { setCategory } = useContext(dataContext);
+    const { setCategory, setPlatform } = useContext(dataContext);
     
     return (
         <>
@@ -21,6 +21,19 @@ function Navbar() {
                     </button>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle text-uppercase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Platform
+                                </a>
+                                <ul className="dropdown-menu px-3">
+                                    <li className="nav-item">
+                                        <NavLink className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setPlatform('pc')}>PC (Windows)</NavLink>
+                                    </li>
+                                    <li className="nav-item">
+                                        <NavLink className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setPlatform('browser')}>Web Browser</NavLink>
+                                    </li>
+                                </ul>
+                            </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle text-uppercase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     categroy
