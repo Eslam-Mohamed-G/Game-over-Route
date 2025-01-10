@@ -1,0 +1,12 @@
+:root {
+    --body-color: rgb(39, 43, 48);
+    --navbar-color: rgb(68, 86, 144);
+    --header-color: rgb(255, 255, 255);
+    --active-color: rgb(23, 162, 184);
+    --input-color: rgb(128, 128, 128);
+    --bg-span-color: rgb(54, 57, 62);
+    --warning-color: rgb(255, 193, 7);
+    --bg-color: rgba(39, 43, 48, 0.89);
+    --border-top-color: rgb(255, 255, 255);
+    --border-left-color: rgb(255, 61, 0);
+}

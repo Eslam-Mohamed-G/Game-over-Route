@@ -4,7 +4,7 @@ import '../../index.css'
 import { Outlet } from 'react-router-dom';
 import Navbar from '../1_header/Navbar';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Games from '../2_games/Games';
+import Games from '../3_games/Games';
 
 function Layout() {
   return (
