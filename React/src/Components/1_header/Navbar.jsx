@@ -11,8 +11,8 @@ function Navbar() {
     
     return (
         <>
-            <nav className="navbar navbar-expand-lg p-0 fixed-top z-3 border">
-                <div className="container container-fluid rounded-4 px-3 py-1">
+            <nav className="navbar navbar-expand-lg p-0 fixed-top z-3">
+                <div className="container container-fluid py-1">
                     <h5 className="navbar-brand mb-0 text-uppercase d-flex flex-row align-items-center gap-1">
                         <NavLink to='/' className="nav-link text-white"><img src={logo} alt="logo photo" style={{ maxWidth: 40 }} /> Game Reviews</NavLink>
                     </h5>
