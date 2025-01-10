@@ -29,6 +29,10 @@ body {
 .navbar-brand, .navbar-brand:hover {
     color: var(--header-color);
 }
+.dropdown .dropdown-menu{
+    background-color: var(--bg-color) !important;
+    min-width: fit-content !important;
+}
 
 .navbar-nav .nav-item .nav-link {
     color: var(--header-color);

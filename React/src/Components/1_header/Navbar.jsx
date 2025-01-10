@@ -22,10 +22,10 @@ function Navbar() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0 gap-3">
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle text-uppercase" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a className="nav-link dropdown-toggle text-uppercase" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     categroy
                                 </a>
-                                <ul className="dropdown-menu bg-black">
+                                <ul className="dropdown-menu px-3">
                                     <li className="nav-item">
                                         <NavLink to='/mmorpg' className={({ isActive }) => `nav-link text-uppercase ${isActive ? 'active' : ''}`} onClick={() => setCategory('mmorpg')}>mmorpg</NavLink>
                                     </li>
