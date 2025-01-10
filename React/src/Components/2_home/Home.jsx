@@ -14,7 +14,7 @@ function Home() {
         if(counter < 400){
             const interval = setInterval(()=>{
                 setCounter(prevCounter => prevCounter+1);
-            },5)
+            },5);
             return () => {
                 clearInterval(interval)
             }
