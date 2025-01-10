@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./homeStyle.css";
-import { useState } from 'react';
-import { useEffect } from 'react';
 
 function Home() {
     const {allGames, loading} = useContext(dataContext);
