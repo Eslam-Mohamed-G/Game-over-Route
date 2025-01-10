@@ -29,7 +29,6 @@ body {
     height: 220px;
 }
 .navbar {
-    top: -30px;
     transition: all 0.3s ease;
 }
 

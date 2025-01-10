@@ -27,6 +27,9 @@ function StoreAPI({ children }) {
         try {
             const response = await axios.request(options);
             setGameUI(response.data);
+            const games = response.data
+            const platform = [...new Set(games.map(game => game.platform))];
+            console.log('platform:', platform);
         } catch (error) {
             console.error("Error fetching games:", error);
         } finally {
@@ -75,25 +78,30 @@ function StoreAPI({ children }) {
     }, [fetchDetails, idGame]);
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
 
-    const fetchAPI = async () => {
+// all games in Home component   all games in Home component  all games in Home component  all games in Home component
+    const [allGames, setAllGameUI] = useState([]);
+    const fetchAllGaemsAPI = async () => {
         try {
             const options = {
                 method: 'GET',
                 url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-                headers: headers
+                headers: headers,
             };
             const response = await axios.request(options);
+            setAllGameUI(response.data);
             console.log(response.data);
         } catch (error) {
-            console.error("fetchingAPI", error);
+            console.error("all games error:-", error);
         }
     }
     useEffect(() => {
-        fetchAPI()
+        fetchAllGaemsAPI()
     }, []);
+
+// all games in Home component   all games in Home component  all games in Home component  all games in Home component
     return (
         <div>
-            <dataContext.Provider value={{gameUI, loading, category, setCategory, details, setIdGame}}>
+            <dataContext.Provider value={{ allGames, gameUI, loading, category, setCategory, details, setIdGame}}>
                 {children}
             </dataContext.Provider>
         </div>

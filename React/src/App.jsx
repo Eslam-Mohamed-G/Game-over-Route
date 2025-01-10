@@ -7,14 +7,19 @@ import Layout from './Components/layout/Layout';
 import StoreAPI from './Components/context/StoreAPI';
 import GamesDetails from './Components/3_gamesDetails/GamesDetails';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Home from './Components/login/home/Home';
 const routes = createBrowserRouter([
   { path: '/', element: <Layout />,
     children: [
-      { index: true, element: <Games/> },
+      { index: true, element: <Home/> },
+      { path: 'card', element: <Games/> },
       { path: 'pixel', element: <Games/> },
+      { path: 'sports', element: <Games/> },
       { path: 'mmorpg', element: <Games/> },
+      { path: 'sci-fi', element: <Games/> },
       { path: 'shooter', element: <Games/> },
       { path: 'sailing', element: <Games/> },
+      { path: 'strategy', element: <Games/> },
       { path: 'superhero', element: <Games/> },
       { path: 'permadeath', element: <Games/> },
     ],
