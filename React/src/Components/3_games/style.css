@@ -15,7 +15,7 @@
 }
 
 .games .card-text{
-    color: var(--input-color);
+    color: var(--text-color);
     display: -webkit-box; 
     -webkit-box-orient: vertical;
     overflow: hidden;

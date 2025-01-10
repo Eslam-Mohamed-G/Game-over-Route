@@ -3,7 +3,7 @@
     --navbar-color: rgb(68, 86, 144);
     --header-color: rgb(255, 255, 255);
     --active-color: rgb(23, 162, 184);
-    --input-color: rgb(128, 128, 128);
+    --text-color: rgb(128, 128, 128);
     /* --input-color: rgb(170, 170, 170); */
     --bg-span-color: rgb(54, 57, 62);
     --warning-color: rgb(255, 193, 7);
@@ -15,16 +15,18 @@
 
 .home > header {
     background-image: url(../../assets/wraper.png);
-    /* background-position: center; */
-    background-size: cover;
     background-repeat: no-repeat;
+    background-color: rgb(28, 30, 34);
+    background-position: top;
+    background-size: cover;
     text-align: center;
-    margin-top: 60px;
-    min-height: 300px !important;
+    align-content: center;
+    margin-top: 58px;
+    min-height: 300px;
     border-bottom: 1px solid rgb(17, 18, 21);
 }
 .home > header:nth-child(1) > h1{
-    color: var(--input-color);
+    color: var(--text-color);
     text-shadow: -1px -1px 0 rgba(0,0,0,.3);
 }
 .home > header:nth-child(1) > h1:nth-child(1) > span:nth-child(1){
