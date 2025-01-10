@@ -6,7 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./homeStyle.css";
 
 function Home() {
-    const {allGames, loading} = useContext(dataContext);
+    const {allGames, loading, setIdGame} = useContext(dataContext);
     const [counter, setCounter] = useState(0);
     const navigate = useNavigate();
 
