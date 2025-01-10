@@ -31,8 +31,8 @@ function Home() {
     return (
         <div className='home'>
             <header>
-                <h1>Discover the best <span>free-to-play</span> games!</h1>
-                <h2>more than <span>+{counter}</span> games</h2>
+                <h1 className='px-5'>Discover the best <span>free-to-play</span> games!</h1>
+                <h2>more than <span>+ {counter}</span> games</h2>
             </header>
             <div className="container games pt-4">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
