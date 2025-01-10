@@ -4,9 +4,29 @@
     --header-color: rgb(255, 255, 255);
     --active-color: rgb(23, 162, 184);
     --input-color: rgb(128, 128, 128);
+    /* --input-color: rgb(170, 170, 170); */
     --bg-span-color: rgb(54, 57, 62);
     --warning-color: rgb(255, 193, 7);
     --bg-color: rgba(39, 43, 48, 0.89);
     --border-top-color: rgb(255, 255, 255);
     --border-left-color: rgb(255, 61, 0);
+    --span-color : rgb(73, 172, 255);
+}
+
+.home > header {
+    background-image: url(../../assets/wraper.png);
+    /* background-position: center; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    text-align: center;
+    margin-top: 60px;
+    min-height: 300px !important;
+    border-bottom: 1px solid rgb(17, 18, 21);
+}
+.home > header:nth-child(1) > h1{
+    color: var(--input-color);
+    text-shadow: -1px -1px 0 rgba(0,0,0,.3);
+}
+.home > header:nth-child(1) > h1:nth-child(1) > span:nth-child(1){
+    color: var(--span-color) !important;
 }

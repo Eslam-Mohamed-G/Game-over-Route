@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
+import "./homeStyle.css";
 
 function Home() {
     const {allGames, loading} = useContext(dataContext);
@@ -15,9 +16,9 @@ function Home() {
         );
     }
     return (
-        <div className='home mt-5'>
+        <div className='home'>
             <header>
-                <h1>Discover the best <span className='text-primary'>free-to-play</span> games!</h1>
+                <h1>Discover the best <span>free-to-play</span> games!</h1>
             </header>
             <div className="container games pt-4">
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
