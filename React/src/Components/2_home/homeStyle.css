@@ -34,6 +34,9 @@
 .home > .games h4{
     color: var(--text-color);
 }
+div.col > div:nth-child(1) > div:nth-child(1) > figcaption:nth-child(2) > div:nth-child(1) > span:nth-child(2){
+    background-color: var(--navbar-color) !important;
+} 
 .game-card {
     background-color: var(--bg-span-color) !important;
     /* color: var(--header-colorr) !important; */

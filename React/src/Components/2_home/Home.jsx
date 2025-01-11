@@ -67,7 +67,7 @@ function Home() {
                                     <figcaption>
                                         <div className="hstack justify-content-between">
                                             <h6>{element.title}</h6>
-                                            <span className="badge text-bg-primary p-2">Free</span>
+                                            <span className="badge p-2">Free</span>
                                         </div>
                                         <p className="card-text text-center d-none">{element.short_description}</p>
                                     </figcaption>
@@ -106,8 +106,8 @@ function Home() {
                                             <h6 className="text-truncate">{game.title}</h6>
                                             <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
                                             <div className='w-100 d-flex flex-row justify-content-between'>
-                                                <span className="badge badge-color py-1 px-2 mb-2 align-content-center">{game.genre}</span>
-                                                <span className="badge badge-ftg py-2 px-2 mb-2 d-md-none">free</span>
+                                                <span className="badge py-1 px-2 mb-2 align-content-center">{game.genre}</span>
+                                                <span className="badge py-2 px-2 mb-2 d-md-none">free</span>
                                             </div>
                                         </div>
                                         <div className="col-1 justify-content-center text-center align-self-center d-none d-md-block"> <span className="badge badge-ftg py-2 px-2 mb-2">free</span> </div>
