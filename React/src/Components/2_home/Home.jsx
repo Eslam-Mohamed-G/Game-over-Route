@@ -10,16 +10,16 @@ import shooterImg from '../../assets/shooter.png';
 import { cardGames, mmorpgGames, shooterGames } from './gamesData';
 
 function Home() {
-    const {allGames, loading, setIdGame} = useContext(dataContext);
+    const { allGames, loading, setIdGame } = useContext(dataContext);
     const [counter, setCounter] = useState(0);
     const [randomGames, setRandomGames] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(counter < 400){
-            const interval = setInterval(()=>{
-                setCounter( prevCounter => prevCounter + 1 );
-            },2);
+        if (counter < 400) {
+            const interval = setInterval(() => {
+                setCounter(prevCounter => prevCounter + 1);
+            }, 2);
             return () => {
                 clearInterval(interval)
             }
@@ -27,7 +27,7 @@ function Home() {
     }, [counter]);
 
     useEffect(() => {
-        if(allGames.length > 0){
+        if (allGames.length > 0) {
             const shuffledGames = [...allGames].sort(() => .5 - Math.random()).slice(0, 4);
             setRandomGames(shuffledGames);
         }
@@ -87,12 +87,12 @@ function Home() {
                     <div className="col-md-8 d-flex flex-column justify-content-between">
                         {mmorpgGames.map((game) => (
                             <div className='item w-100 d-flex rounded border'
-                            key={game.id}
-                            onClick={() => {
-                                navigate(`/${game.title}/${game.id}`);
-                                setIdGame(game.id);
-                            }}
-                            style={{ cursor: 'pointer' }}>
+                                key={game.id}
+                                onClick={() => {
+                                    navigate(`/${game.title}/${game.id}`);
+                                    setIdGame(game.id);
+                                }}
+                                style={{ cursor: 'pointer' }}>
                                 <figure className="position-relative w-25">
                                     <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
                                 </figure>
@@ -111,16 +111,17 @@ function Home() {
                         <img src={mmorpgImg} alt="mmorpg-Img" className='w-100 h-100' />
                     </div>
                 </div>
+                {/* shooter */}
                 <div className="row mb-5">
-                <div className="col-md-8 d-flex flex-column justify-content-between">
+                    <div className="col-md-8 d-flex flex-column justify-content-between">
                         {shooterGames.map((game) => (
                             <div className='item w-100 d-flex rounded border'
-                            key={game.id}
-                            onClick={() => {
-                                navigate(`/${game.title}/${game.id}`);
-                                setIdGame(game.id);
-                            }}
-                            style={{ cursor: 'pointer' }}>
+                                key={game.id}
+                                onClick={() => {
+                                    navigate(`/${game.title}/${game.id}`);
+                                    setIdGame(game.id);
+                                }}
+                                style={{ cursor: 'pointer' }}>
                                 <figure className="position-relative w-25">
                                     <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
                                 </figure>
@@ -139,16 +140,18 @@ function Home() {
                         <img src={shooterImg} alt="shooter-Img" className='w-100 h-100' />
                     </div>
                 </div>
+
+                {/* card game */}
                 <div className="row">
-                <div className="col-md-8 d-flex flex-column justify-content-between">
+                    <div className="col-md-8 d-flex flex-column justify-content-between">
                         {cardGames.map((game) => (
                             <div className='item w-100 d-flex rounded border'
-                            key={game.id}
-                            onClick={() => {
-                                navigate(`/${game.title}/${game.id}`);
-                                setIdGame(game.id);
-                            }}
-                            style={{ cursor: 'pointer' }}>
+                                key={game.id}
+                                onClick={() => {
+                                    navigate(`/${game.title}/${game.id}`);
+                                    setIdGame(game.id);
+                                }}
+                                style={{ cursor: 'pointer' }}>
                                 <figure className="position-relative w-25">
                                     <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
                                 </figure>
