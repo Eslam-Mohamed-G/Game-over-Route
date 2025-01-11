@@ -4,6 +4,10 @@ import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
 import "./homeStyle.css";
+import cardImg from '../../assets/card.png';
+import mmorpgImg from '../../assets/mmorpg.png';
+import shooterImg from '../../assets/shooter.png';
+import { cardGames, mmorpgGames, shooterGames } from './gamesData';
 
 function Home() {
     const {allGames, loading, setIdGame} = useContext(dataContext);
@@ -75,6 +79,93 @@ function Home() {
                             </div>
                         </div>
                     ))}
+                </div>
+            </div>
+
+            <div className='container mt-5'>
+                <div className="row border mb-5">
+                    <div className="col-md-8 d-flex flex-column justify-content-between">
+                        {mmorpgGames.map((game) => (
+                            <div className='item w-100 d-flex rounded border'
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}>
+                                <figure className="position-relative w-25">
+                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
+                                </figure>
+                                <figcaption className='w-75'>
+                                    <div className="hstack justify-content-between">
+                                        <h6>{game.title}</h6>
+                                        <span className="badge text-bg-primary p-2">Free</span>
+                                    </div>
+                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
+                                    <span className="badge badge-color rounded-2">{game.genre}</span>
+                                </figcaption>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-md-4 d-none d-md-block">
+                        <img src={mmorpgImg} alt="mmorpg-Img" className='w-100 h-100' />
+                    </div>
+                </div>
+                <div className="row mb-5">
+                <div className="col-md-8 d-flex flex-column justify-content-between">
+                        {shooterGames.map((game) => (
+                            <div className='item w-100 d-flex rounded border'
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}>
+                                <figure className="position-relative w-25">
+                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
+                                </figure>
+                                <figcaption className='w-75'>
+                                    <div className="hstack justify-content-between">
+                                        <h6>{game.title}</h6>
+                                        <span className="badge text-bg-primary p-2">Free</span>
+                                    </div>
+                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
+                                    <span className="badge badge-color rounded-2">{game.genre}</span>
+                                </figcaption>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-md-4 d-none d-md-block">
+                        <img src={shooterImg} alt="shooter-Img" className='w-100 h-100' />
+                    </div>
+                </div>
+                <div className="row">
+                <div className="col-md-8 d-flex flex-column justify-content-between">
+                        {cardGames.map((game) => (
+                            <div className='item w-100 d-flex rounded border'
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}>
+                                <figure className="position-relative w-25">
+                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
+                                </figure>
+                                <figcaption className='w-75'>
+                                    <div className="hstack justify-content-between">
+                                        <h6>{game.title}</h6>
+                                        <span className="badge text-bg-primary p-2">Free</span>
+                                    </div>
+                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
+                                    <span className="badge badge-color rounded-2">{game.genre}</span>
+                                </figcaption>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="col-md-4 d-none d-md-block">
+                        <img src={cardImg} alt="card-Img" className=' w-100 h-100' />
+                    </div>
                 </div>
             </div>
         </div>
