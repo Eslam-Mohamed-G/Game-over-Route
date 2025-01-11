@@ -4,7 +4,7 @@
     --header-color: rgb(255, 255, 255);
     --active-color: rgb(23, 162, 184);
     --text-color: rgb(128, 128, 128);
-    /* --input-color: rgb(170, 170, 170); */
+    --input-color: rgb(170, 170, 170);
     --bg-span-color: rgb(54, 57, 62);
     --warning-color: rgb(255, 193, 7);
     --bg-color: rgba(39, 43, 48, 0.89);
@@ -31,6 +31,29 @@
 .home > header span{
     color: var(--span-color) !important;
 }
+.home > .games h4{
+    color: var(--text-color);
+}
+.game-card {
+    background-color: var(--bg-span-color) !important;
+    /* color: var(--header-colorr) !important; */
+    transition: all ease-in-out .3s;
+}
+.game-card:hover{
+    scale: 1.02;
+}
+.game-card p{
+    color: var(--text-color) !important;
+    font-size: 14px;
+}
+
 div.row > div:nth-child(1) > div:nth-child(2){
     margin: 15px 0;
+}
+
+.gamesData .text-truncate {
+    color: var(--header-color);
+}
+.gamesData span {
+    background-color: var(--navbar-color);
 }

@@ -46,8 +46,8 @@ function Home() {
                 <h1 className='px-5'>Discover the best <span>free-to-play</span> games!</h1>
                 <h2>more than <span>+ {counter}</span> games</h2>
             </header>
-            <div className="container games pt-4">
-                <h5>Personalized Recommendations</h5>
+            <div className="container games">
+                <h4>Personalized Recommendations</h4>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
                     {randomGames?.map((element) => (
                         <div
@@ -69,7 +69,7 @@ function Home() {
                                             <h6>{element.title}</h6>
                                             <span className="badge text-bg-primary p-2">Free</span>
                                         </div>
-                                        <p className="card-text text-center">{element.short_description}</p>
+                                        <p className="card-text text-center d-none">{element.short_description}</p>
                                     </figcaption>
                                 </div>
                                 <footer className="card-footer small hstack justify-content-between">
@@ -82,24 +82,35 @@ function Home() {
                 </div>
             </div>
 
-            <div className='container mt-5'>
+            <div className='container mt-5 gamesData'>
                 <div className="row mb-5">
                     <div className="col-md-8 h-100">
-                    {mmorpgGames.map((game) => (
-                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                        {mmorpgGames.map((game) => (
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}
+                            >
                                 <div className="card-body px-4">
                                     <div className="row py-0">
                                         <div className="col-5 col-md-3 align-self-center p-1 m-0">
                                             <div className="image-wrapper">
                                                 <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
                                             </div>
-                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                            {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
                                         </div>
                                         <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
                                             <h6 className="text-truncate">{game.title}</h6>
                                             <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
-                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                            <div className='w-100 d-flex flex-row justify-content-between'>
+                                                <span className="badge badge-color py-1 px-2 mb-2 align-content-center">{game.genre}</span>
+                                                <span className="badge badge-ftg py-2 px-2 mb-2 d-md-none">free</span>
+                                            </div>
                                         </div>
+                                        <div className="col-1 justify-content-center text-center align-self-center d-none d-md-block"> <span className="badge badge-ftg py-2 px-2 mb-2">free</span> </div>
                                     </div>
                                 </div>
                             </div>
@@ -112,21 +123,32 @@ function Home() {
                 {/* shooter */}
                 <div className="row mb-5">
                     <div className="col-md-8 col-md-8 h-100">
-                    {shooterGames.map((game) => (
-                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                        {shooterGames.map((game) => (
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}
+                            >                                
                                 <div className="card-body px-4">
                                     <div className="row py-0">
                                         <div className="col-5 col-md-3 align-self-center p-1 m-0">
                                             <div className="image-wrapper">
                                                 <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
                                             </div>
-                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                            {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
                                         </div>
                                         <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
                                             <h6 className="text-truncate">{game.title}</h6>
                                             <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
-                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                            <div className='w-100 d-flex flex-row justify-content-between'>
+                                                <span className="badge badge-color py-1 px-2 mb-2 align-content-center">{game.genre}</span>
+                                                <span className="badge badge-ftg py-2 px-2 mb-2 d-md-none">free</span>
+                                            </div>
                                         </div>
+                                        <div className="col-1 justify-content-center text-center align-self-center d-none d-md-block"> <span className="badge badge-ftg py-2 px-2 mb-2">free</span> </div>
                                     </div>
                                 </div>
                             </div>
@@ -141,20 +163,31 @@ function Home() {
                 <div className="row">
                     <div className="col-md-8 col-md-8 h-100">
                         {cardGames.map((game) => (
-                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
+                            key={game.id}
+                            onClick={() => {
+                                navigate(`/${game.title}/${game.id}`);
+                                setIdGame(game.id);
+                            }}
+                            style={{ cursor: 'pointer' }}
+                            >
                                 <div className="card-body px-4">
                                     <div className="row py-0">
                                         <div className="col-5 col-md-3 align-self-center p-1 m-0">
                                             <div className="image-wrapper">
                                                 <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
                                             </div>
-                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                            {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
                                         </div>
                                         <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
                                             <h6 className="text-truncate">{game.title}</h6>
                                             <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
-                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                            <div className='d-flex flex-row justify-content-between'>
+                                                <span className="badge badge-ftg py-1 px-2 mb-2 align-content-center">{game.genre}</span>
+                                                <span className="badge badge-ftg py-2 px-2 mb-2 d-md-none">free</span>
+                                            </div>
                                         </div>
+                                        <div className="col-1 justify-content-center text-center align-self-center d-none d-md-block"> <span className="badge badge-ftg py-2 px-2 mb-2">free</span> </div>
                                     </div>
                                 </div>
                             </div>
