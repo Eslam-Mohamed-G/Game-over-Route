@@ -8,6 +8,7 @@ import "./homeStyle.css";
 function Home() {
     const {allGames, loading, setIdGame} = useContext(dataContext);
     const [counter, setCounter] = useState(0);
+    const [randomGames, setRandomGames] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -20,6 +21,13 @@ function Home() {
             }
         };
     }, [counter]);
+
+    useEffect(() => {
+        if(allGames.length > 0){
+            const shuffledGames = [...allGames].sort(() => .5 - Math.random()).slice(0, 4);
+            setRandomGames(shuffledGames);
+        }
+    }, [allGames]);
 
     if (loading) {
         return (
@@ -35,8 +43,9 @@ function Home() {
                 <h2>more than <span>+ {counter}</span> games</h2>
             </header>
             <div className="container games pt-4">
+                <h5>Personalized Recommendations</h5>
                 <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
-                    {allGames?.map((element) => (
+                    {randomGames?.map((element) => (
                         <div
                             className='col'
                             key={element.id}
