@@ -13,8 +13,8 @@ function Navbar() {
         <>
             <nav className="navbar navbar-expand-lg p-0 fixed-top z-3">
                 <div className="container container-fluid py-2">
-                    <h5 className="navbar-brand mb-0 text-uppercase d-flex flex-row align-items-center gap-1">
-                        <Link to='/' className="nav-link text-white"><img src={logo} alt="logo photo" style={{ maxWidth: 40 }} /> Game Reviews</Link>
+                    <h5 className="navbar-brand mb-0 text-uppercase">
+                        <Link to='/' className="nav-link text-white d-flex flex-row align-items-center gap-1"><img src={logo} alt="logo photo" style={{ maxWidth: 40 }} /> Game Reviews</Link>
                     </h5>
                     <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon" />
