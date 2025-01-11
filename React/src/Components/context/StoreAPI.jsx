@@ -15,21 +15,46 @@ function StoreAPI({ children }) {
         'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
     }
 
-    const options = {
-        method: 'GET',
-        url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-        params: { category: category },
-        headers: headers,
-    };
-
-    const fetchGames = useCallback(async () => {
+    // all games in Home component   all games in Home component  all games in Home component  all games in Home component
+    const [allGames, setAllGameUI] = useState([]);
+    const fetchAllGaemsAPI = useCallback(async () => {
         setLoading(true);
         try {
+            const options = {
+                method: 'GET',
+                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+                headers: headers,
+            };
             const response = await axios.request(options);
-            setGameUI(response.data);
+            setAllGameUI(response.data);
+            // console.log(response.data);
             // const games = response.data
             // const platform = [...new Set(games.map(game => game.platform))];
             // console.log('platform:', platform);
+        } catch (error) {
+            console.error("all games error:-", error);
+        }finally{
+            setLoading(false);
+        };
+    },[])
+    useEffect(() => {
+        fetchAllGaemsAPI()
+    }, []);
+
+// all games in Home component   all games in Home component  all games in Home component  all games in Home component
+
+// fetch games by category      fetch games by category      fetch games by category      fetch games by category      
+    const fetchGames = useCallback(async () => {
+        setLoading(true);
+        try {
+            const options = {
+                method: 'GET',
+                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
+                params: { category: category },
+                headers: headers,
+            };
+            const response = await axios.request(options);
+            setGameUI(response.data);
         } catch (error) {
             console.error("Error fetching games Games Component:", error);
         } finally {
@@ -43,6 +68,7 @@ function StoreAPI({ children }) {
             sessionStorage.setItem('category', category)
         }
     }, [fetchGames, category]);
+// fetch games by category      fetch games by category      fetch games by category      fetch games by category      
     
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
     const [idGame, setIdGame] = useState(()=>{
@@ -77,28 +103,6 @@ function StoreAPI({ children }) {
         }
     }, [fetchDetails, idGame]);
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
-
-// all games in Home component   all games in Home component  all games in Home component  all games in Home component
-    const [allGames, setAllGameUI] = useState([]);
-    const fetchAllGaemsAPI = async () => {
-        try {
-            const options = {
-                method: 'GET',
-                url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-                headers: headers,
-            };
-            const response = await axios.request(options);
-            setAllGameUI(response.data);
-            // console.log(response.data);
-        } catch (error) {
-            console.error("all games error:-", error);
-        }
-    }
-    useEffect(() => {
-        fetchAllGaemsAPI()
-    }, []);
-
-// all games in Home component   all games in Home component  all games in Home component  all games in Home component
 
 // games by plateform   games by plateform  games by plateform  games by plateform
     const [platform, setPlatform] = useState(null);
