@@ -31,3 +31,6 @@
 .home > header span{
     color: var(--span-color) !important;
 }
+div.row > div:nth-child(1) > div:nth-child(2){
+    margin: 15px 0;
+}

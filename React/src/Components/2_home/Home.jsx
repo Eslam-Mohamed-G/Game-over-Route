@@ -83,27 +83,25 @@ function Home() {
             </div>
 
             <div className='container mt-5'>
-                <div className="row border mb-5">
-                    <div className="col-md-8 d-flex flex-column justify-content-between">
-                        {mmorpgGames.map((game) => (
-                            <div className='item w-100 d-flex rounded border'
-                                key={game.id}
-                                onClick={() => {
-                                    navigate(`/${game.title}/${game.id}`);
-                                    setIdGame(game.id);
-                                }}
-                                style={{ cursor: 'pointer' }}>
-                                <figure className="position-relative w-25">
-                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
-                                </figure>
-                                <figcaption className='w-75'>
-                                    <div className="hstack justify-content-between">
-                                        <h6>{game.title}</h6>
-                                        <span className="badge text-bg-primary p-2">Free</span>
+                <div className="row mb-5">
+                    <div className="col-md-8 h-100">
+                    {mmorpgGames.map((game) => (
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                                <div className="card-body px-4">
+                                    <div className="row py-0">
+                                        <div className="col-5 col-md-3 align-self-center p-1 m-0">
+                                            <div className="image-wrapper">
+                                                <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
+                                            </div>
+                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                        </div>
+                                        <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
+                                            <h6 className="text-truncate">{game.title}</h6>
+                                            <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
+                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                        </div>
                                     </div>
-                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
-                                    <span className="badge badge-color rounded-2">{game.genre}</span>
-                                </figcaption>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -113,26 +111,24 @@ function Home() {
                 </div>
                 {/* shooter */}
                 <div className="row mb-5">
-                    <div className="col-md-8 d-flex flex-column justify-content-between">
-                        {shooterGames.map((game) => (
-                            <div className='item w-100 d-flex rounded border'
-                                key={game.id}
-                                onClick={() => {
-                                    navigate(`/${game.title}/${game.id}`);
-                                    setIdGame(game.id);
-                                }}
-                                style={{ cursor: 'pointer' }}>
-                                <figure className="position-relative w-25">
-                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
-                                </figure>
-                                <figcaption className='w-75'>
-                                    <div className="hstack justify-content-between">
-                                        <h6>{game.title}</h6>
-                                        <span className="badge text-bg-primary p-2">Free</span>
+                    <div className="col-md-8 col-md-8 h-100">
+                    {shooterGames.map((game) => (
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                                <div className="card-body px-4">
+                                    <div className="row py-0">
+                                        <div className="col-5 col-md-3 align-self-center p-1 m-0">
+                                            <div className="image-wrapper">
+                                                <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
+                                            </div>
+                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                        </div>
+                                        <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
+                                            <h6 className="text-truncate">{game.title}</h6>
+                                            <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
+                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                        </div>
                                     </div>
-                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
-                                    <span className="badge badge-color rounded-2">{game.genre}</span>
-                                </figcaption>
+                                </div>
                             </div>
                         ))}
                     </div>
@@ -143,26 +139,24 @@ function Home() {
 
                 {/* card game */}
                 <div className="row">
-                    <div className="col-md-8 d-flex flex-column justify-content-between">
+                    <div className="col-md-8 col-md-8 h-100">
                         {cardGames.map((game) => (
-                            <div className='item w-100 d-flex rounded border'
-                                key={game.id}
-                                onClick={() => {
-                                    navigate(`/${game.title}/${game.id}`);
-                                    setIdGame(game.id);
-                                }}
-                                style={{ cursor: 'pointer' }}>
-                                <figure className="position-relative w-25">
-                                    <img className="card-img-top object-fit-cover w-100 h-100" src={game.thumbnail} alt={game.title} />
-                                </figure>
-                                <figcaption className='w-75'>
-                                    <div className="hstack justify-content-between">
-                                        <h6>{game.title}</h6>
-                                        <span className="badge text-bg-primary p-2">Free</span>
+                            <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm" key={game.id}>
+                                <div className="card-body px-4">
+                                    <div className="row py-0">
+                                        <div className="col-5 col-md-3 align-self-center p-1 m-0">
+                                            <div className="image-wrapper">
+                                                <img className="card-img-top m-0 d-block rounded-start rounded-end-0 h-100" src={game.thumbnail} alt={game.title} />
+                                            </div>
+                                                {/* <video className="featuredvideo" loop preload="none" muted __idm_id__={1892357} /> */}
+                                        </div>
+                                        <div className="col-7 col-sm-6 col-lg-7 align-self-center justify-content-center position-static">
+                                            <h6 className="text-truncate">{game.title}</h6>
+                                            <p className="text-truncate text-muted text-nowrap text-truncate">{game.short_description}</p>
+                                            <span className="badge badge-color rounded-2">{game.genre}</span>
+                                        </div>
                                     </div>
-                                    <p className="card-text text-center text-nowrap text-truncate">{game.short_description}</p>
-                                    <span className="badge badge-color rounded-2">{game.genre}</span>
-                                </figcaption>
+                                </div>
                             </div>
                         ))}
                     </div>
