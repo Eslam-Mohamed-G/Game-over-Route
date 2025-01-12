@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -36,9 +36,14 @@ import "./style.css";
   // useEffect(() => {
   //   fetchGames();
   // }, [category]);
-function Games() {
-  const {gameUI, loading, setIdGame} = useContext(dataContext);
+function Games({ platform }) {
+  const {gameUI, loading, setIdGame, setPlatform } = useContext(dataContext);
   const navigate = useNavigate();
+  useEffect(() => {
+    if (platform) {
+      setPlatform(platform);
+    }
+  }, [platform, setPlatform]);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);

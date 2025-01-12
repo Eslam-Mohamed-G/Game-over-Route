@@ -8,22 +8,23 @@ import StoreAPI from './Components/context/StoreAPI';
 import GamesDetails from './Components/4_gamesDetails/GamesDetails';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './Components/2_home/Home';
+import GamesGategory from './Components/gamesGategory/GamesGategory';
 const routes = createBrowserRouter([
   { path: '/', element: <Layout />,
     children: [
       { index: true, element: <Home/> },
-      { path: 'pc', element: <Games/> },
-      { path: 'card', element: <Games/> },
-      { path: 'pixel', element: <Games/> },
-      { path: 'sports', element: <Games/> },
-      { path: 'mmorpg', element: <Games/> },
-      { path: 'sci-fi', element: <Games/> },
-      { path: 'shooter', element: <Games/> },
-      { path: 'sailing', element: <Games/> },
-      { path: 'browser', element: <Games/> },
-      { path: 'strategy', element: <Games/> },
-      { path: 'superhero', element: <Games/> },
-      { path: 'permadeath', element: <Games/> },
+      { path: 'pc', element: <Games platform={'pc'}/> },
+      { path: 'browser', element: <Games platform={'browser'}/> },
+      { path: 'card', element: <GamesGategory category={'card'}/> },
+      { path: 'pixel', element: <GamesGategory category={'pixel'}/> },
+      { path: 'sports', element: <GamesGategory category={'sports'}/> },
+      { path: 'mmorpg', element: <GamesGategory category={'mmorpg'}/> },
+      { path: 'sci-fi', element: <GamesGategory category={'sci-fi'}/> },
+      { path: 'shooter', element: <GamesGategory category={'shooter'}/> },
+      { path: 'sailing', element: <GamesGategory category={'sailing'}/> },
+      { path: 'strategy', element: <GamesGategory category={'strategy'}/> },
+      { path: 'superhero', element: <GamesGategory category={'superhero'}/> },
+      { path: 'permadeath', element: <GamesGategory category={'permadeath'}/> },
     ],
   },
   { path: '/:game/:id', element: <GamesDetails /> },

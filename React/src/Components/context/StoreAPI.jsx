@@ -6,10 +6,7 @@ export const dataContext = createContext();
 function StoreAPI({ children }) {
     const [gameUI, setGameUI] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [category, setCategory] = useState(()=>{
-        const savedGames = sessionStorage.getItem('category');
-        return savedGames ? savedGames : "mmorpg";
-    });
+
     const headers = {
         'x-rapidapi-key': '6a1ac68fc8msh7784b7711a286d5p197782jsn8fa5fa9c631a',
         'x-rapidapi-host': 'free-to-play-games-database.p.rapidapi.com',
@@ -33,17 +30,21 @@ function StoreAPI({ children }) {
             // console.log('platform:', platform);
         } catch (error) {
             console.error("all games error:-", error);
-        }finally{
+        } finally {
             setLoading(false);
         };
-    },[])
+    }, [])
     useEffect(() => {
         fetchAllGaemsAPI()
-    }, []);
+    }, [fetchAllGaemsAPI]);
 
-// all games in Home component   all games in Home component  all games in Home component  all games in Home component
+    // all games in Home component   all games in Home component  all games in Home component  all games in Home component
 
-// fetch games by category      fetch games by category      fetch games by category      fetch games by category      
+    // fetch games by category      fetch games by category      fetch games by category      fetch games by category      
+    const [category, setCategory] = useState(() => {
+        const savedGames = sessionStorage.getItem('category');
+        return savedGames ? savedGames : "mmorpg";
+    });
     const fetchGames = useCallback(async () => {
         setLoading(true);
         try {
@@ -55,6 +56,7 @@ function StoreAPI({ children }) {
             };
             const response = await axios.request(options);
             setGameUI(response.data);
+            sessionStorage.setItem('gameUI', JSON.stringify({ category, data: response.data }));
         } catch (error) {
             console.error("Error fetching games Games Component:", error);
         } finally {
@@ -63,15 +65,20 @@ function StoreAPI({ children }) {
     }, [category]);
 
     useEffect(() => {
-        fetchGames();
-        if(category){
-            sessionStorage.setItem('category', category)
+        const savedGameUI = JSON.parse(sessionStorage.getItem('gameUI'));
+        if (savedGameUI && savedGameUI.category === category) {
+            setGameUI(savedGameUI.data);
+        } else {
+            fetchGames();
+        }
+        if (category) {
+            sessionStorage.setItem('category', category);
         }
     }, [fetchGames, category]);
-// fetch games by category      fetch games by category      fetch games by category      fetch games by category      
-    
+    // fetch games by category      fetch games by category      fetch games by category      fetch games by category      
+
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
-    const [idGame, setIdGame] = useState(()=>{
+    const [idGame, setIdGame] = useState(() => {
         const savedIdGame = sessionStorage.getItem('idGame');
         return savedIdGame ? savedIdGame : null;
     });
@@ -98,44 +105,44 @@ function StoreAPI({ children }) {
 
     useEffect(() => {
         fetchDetails();
-        if(idGame){
+        if (idGame) {
             sessionStorage.setItem('idGame', idGame)
         }
     }, [fetchDetails, idGame]);
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
 
-// games by plateform   games by plateform  games by plateform  games by plateform
-    const [platform, setPlatform] = useState(()=>{
+    // games by plateform   games by plateform  games by plateform  games by plateform
+    const [platform, setPlatform] = useState(() => {
         const savedPlatform = sessionStorage.getItem('platform');
         return savedPlatform ? savedPlatform : null;
     });
-    const fetchPlatform = useCallback(async()=>{
+    const fetchPlatform = useCallback(async () => {
         setLoading(true);
         try {
             const options = {
                 method: 'GET',
                 url: 'https://free-to-play-games-database.p.rapidapi.com/api/games',
-                params: {platform: platform},
+                params: { platform: platform },
                 headers: headers
             };
             const response = await axios.request(options);
             setGameUI(response.data);
-            console.log('platform data',response.data);
+            // sessionStorage.setItem('gameUI', JSON.stringify(response.data));
         } catch (error) {
             console.error('platform error:-', error);
-        } finally{
+        } finally {
             setLoading(false);
         }
     }, [platform]);
 
     useEffect(() => {
-        fetchPlatform();
         if (platform) {
-            sessionStorage.setItem('platform', platform);
+            fetchPlatform();
+            // sessionStorage.setItem('platform', platform);
         }
     }, [platform, fetchPlatform]);
 
-// games by plateform   games by plateform  games by plateform  games by plateform
+    // games by plateform   games by plateform  games by plateform  games by plateform
     return (
         <div>
             <dataContext.Provider value={{ allGames, gameUI, loading, category, setCategory, details, setIdGame, setPlatform }}>
