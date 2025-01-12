@@ -1,6 +1,7 @@
-# Free-to-Play Games Database [live demo](https://game-over-route-rouge.vercel.app/)
+# Free-to-Play Games Database 
 
 This project is a web application that displays a list of free-to-play games available online. The app uses the [Free-to-Play Games Database API](https://www.freetogame.com/api-doc) to fetch game data and display it in an interactive way.
+# [live demo](https://game-over-route-rouge.vercel.app/)
 ![Add Product Preview](./public/preview_1.png)
 
 ## Features
