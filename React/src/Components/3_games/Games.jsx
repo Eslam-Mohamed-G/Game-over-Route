@@ -91,11 +91,13 @@ function Games() {
         <div className='d-flex justify-content-center'>
           <ul className='pagination'>
             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-              <span className="page-link" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+              <span className="page-link" onClick={() => {paginate(currentPage - 1); navigate(`/${element.title}/${element.id}`);}} disabled={currentPage === 1}>
                 <i class="bi bi-arrow-left-square-fill"></i>
               </span>
             </li>
-
+            {[...Array(Math.ceil(gameUI.length / gamePage)).keys()].map((num)=>(
+              <li key={num + 1} className={`page-item ${currentPage === num + 1 ? 'active' : ''}`}></li>
+            ))}
             <li className={`page-item ${currentPage === Math.ceil(gameUI.length / gamePage) ? 'disabled' : ''}`}>
               <span className="page-link text-dark" onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(gameUI.length / gamePage)}>
                 <i class="bi bi-arrow-right-square-fill"></i>
