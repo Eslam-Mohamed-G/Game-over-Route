@@ -1,6 +1,8 @@
 import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./style.css";
 
 
@@ -90,17 +92,17 @@ function Games() {
         ))}
       </div>
       {/* Pagination controls */}
-      <div className="d-flex justify-content-center mt-4">
+      <div className="d-flex justify-content-center mt-5">
         <nav>
-          <ul className="pagination">
+          <ul className="pagination gap-2">
             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
-              <button
-                className="page-link"
+              <div
+                className="page-number"
                 onClick={() => paginate(currentPage - 1)}
                 disabled={currentPage === 1}
               >
-                <i className="bi bi-arrow-left-square-fill"></i>
-              </button>
+                <span><i className="bi bi-arrow-left-short"></i></span>
+              </div>
             </li>
             {[...Array(Math.ceil(gameUI.length / gamePage)).keys()].map((number) => {
               const pageNumber = number + 1;
@@ -113,7 +115,7 @@ function Games() {
                 return (
                   <li key={pageNumber} className={`page-item ${currentPage === pageNumber ? 'active' : ''}`}>
                     <button
-                      className="page-link"
+                      className="page-number"
                       onClick={() => paginate(pageNumber)}
                     >
                       {pageNumber}
@@ -128,7 +130,7 @@ function Games() {
               ) {
                 return (
                   <li key={pageNumber} className="page-item disabled">
-                    <span className="page-link">...</span>
+                    <span className="page-number">...</span>
                   </li>
                 );
               }
@@ -136,13 +138,13 @@ function Games() {
               return null
             })}
             <li className={`page-item ${currentPage === Math.ceil(gameUI.length / gamePage) ? 'disabled' : ''}`}>
-              <button
-                className="page-link"
+              <div
+                className="page-number"
                 onClick={() => paginate(currentPage + 1)}
                 disabled={currentPage === Math.ceil(gameUI.length / gamePage)}
               >
-                <i className="bi bi-arrow-right-square-fill"></i>
-              </button>
+                <span className='w-100 rounded'><i className="bi bi-arrow-right-short"></i></span>
+              </div>
             </li>
           </ul>
         </nav>

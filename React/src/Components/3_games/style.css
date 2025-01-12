@@ -34,3 +34,29 @@
 .games .card-footer span{
     background-color: var(--bg-span-color);
 }
+
+.pagination .page-item{
+    padding: 0;
+    align-content: center;
+}
+.pagination .page-item .page-number {
+    background-color: var(--body-color);
+    color: var(--text-color);
+    cursor: pointer;
+    border: 0;
+    padding: 0 2px;
+}
+
+div.page-number {
+    background-color: var(--navbar-color) !important;
+}
+
+.pagination .page-item .page-number span {
+    color: var(--header-color);
+    padding: 0 5px;
+}
+
+li.active .page-number{
+    color: var(--navbar-color)!important;
+    border-bottom: 3px solid var(--navbar-color) !important;
+}
