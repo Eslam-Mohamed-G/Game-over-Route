@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "./style.css";
@@ -38,6 +38,15 @@ function Games() {
   const {gameUI, loading, setIdGame} = useContext(dataContext);
   const navigate = useNavigate();
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const gamePage = 20;
+
+  const indexOfLastGame = currentPage * gamePage;
+  const indexOfFirstGame = indexOfLastGame - gamePage;
+  const currentGames = gameUI.slice(indexOfFirstGame, indexOfLastGame);
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   if (loading) {
     return (
       <div className='loading'>
@@ -49,7 +58,7 @@ function Games() {
   return (
     <div className="container games">
       <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-gap-4">
-        {gameUI?.map((element) => (
+        {currentGames?.map((element) => (
           <div
             className='col'
             key={element.id}
@@ -79,6 +88,21 @@ function Games() {
             </div>
           </div>
         ))}
+        <div className='d-flex justify-content-center'>
+          <ul className='pagination'>
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <span className="page-link" onClick={() => paginate(currentPage - 1)} disabled={currentPage === 1}>
+                <i class="bi bi-arrow-left-square-fill"></i>
+              </span>
+            </li>
+
+            <li className={`page-item ${currentPage === Math.ceil(gameUI.length / gamePage) ? 'disabled' : ''}`}>
+              <span className="page-link text-dark" onClick={() => paginate(currentPage + 1)} disabled={currentPage === Math.ceil(gameUI.length / gamePage)}>
+                <i class="bi bi-arrow-right-square-fill"></i>
+              </span>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
