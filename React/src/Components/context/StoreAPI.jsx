@@ -105,7 +105,10 @@ function StoreAPI({ children }) {
     // GamesDetails  GamesDetails   GamesDetails   GamesDetails 
 
 // games by plateform   games by plateform  games by plateform  games by plateform
-    const [platform, setPlatform] = useState(null);
+    const [platform, setPlatform] = useState(()=>{
+        const savedPlatform = sessionStorage.getItem('savedPlatform');
+        return savedPlatform ? savedPlatform : null;
+    });
     const fetchPlatform = useCallback(async()=>{
         setLoading(true);
         try {
@@ -128,6 +131,7 @@ function StoreAPI({ children }) {
     useEffect(() => {
         if (platform) {
             fetchPlatform();
+            sessionStorage.setItem('platform', platform);
         }
     }, [platform, fetchPlatform]);
 
