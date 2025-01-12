@@ -92,7 +92,7 @@ function Games() {
         ))}
       </div>
       {/* Pagination controls */}
-      <div className="d-flex justify-content-center mt-5">
+      <div className={`d-flex justify-content-center mt-5 ${ gameUI.length < 20 ? 'd-none' : ''}`}>
         <nav>
           <ul className="pagination gap-2">
             <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
