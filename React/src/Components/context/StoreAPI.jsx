@@ -106,7 +106,7 @@ function StoreAPI({ children }) {
 
 // games by plateform   games by plateform  games by plateform  games by plateform
     const [platform, setPlatform] = useState(()=>{
-        const savedPlatform = sessionStorage.getItem('savedPlatform');
+        const savedPlatform = sessionStorage.getItem('platform');
         return savedPlatform ? savedPlatform : null;
     });
     const fetchPlatform = useCallback(async()=>{
@@ -129,8 +129,8 @@ function StoreAPI({ children }) {
     }, [platform]);
 
     useEffect(() => {
+        fetchPlatform();
         if (platform) {
-            fetchPlatform();
             sessionStorage.setItem('platform', platform);
         }
     }, [platform, fetchPlatform]);
