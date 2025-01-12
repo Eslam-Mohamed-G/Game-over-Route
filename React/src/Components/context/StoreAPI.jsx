@@ -127,7 +127,6 @@ function StoreAPI({ children }) {
             };
             const response = await axios.request(options);
             setGameUI(response.data);
-            // sessionStorage.setItem('gameUI', JSON.stringify(response.data));
         } catch (error) {
             console.error('platform error:-', error);
         } finally {
@@ -138,7 +137,6 @@ function StoreAPI({ children }) {
     useEffect(() => {
         if (platform) {
             fetchPlatform();
-            // sessionStorage.setItem('platform', platform);
         }
     }, [platform, fetchPlatform]);
 
