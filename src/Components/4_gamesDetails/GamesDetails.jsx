@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -9,6 +9,9 @@ import Footer from '../footer/Footer';
 function GamesDetails() {
     const { details, loading, category } = useContext(dataContext);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
+    const [isExpanded, setIsExpanded] = useState(false);
+    // useEffect(() => {
+    // }, [isExpanded]);
 
     if (loading) {
         return (
@@ -57,7 +60,14 @@ function GamesDetails() {
 
                     <div className="col-md-8 pt-5">
                         <h3 className='title-h3'>About {details.title}</h3>
-                        <p className="small">{details.description}</p>
+                        <div className="card-body bg-transparent text-white">
+                            <div className="collapse" id="collapseExample">
+                                <p className="small">{details.description}</p>
+                            </div>
+                            <p className="d-inline-flex gap-1 text-capitalize" onClick={() => setIsExpanded(!isExpanded)} type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                {!isExpanded ? "+ read more" : "- read less"}
+                            </p>
+                        </div>
                         <h3 className='title-h3'>Additional Information</h3>
                         <div className='row'>
                             <div className='col-6 col-lg-4 pb-3'><span className='title'>Publisher</span><br />{details.publisher}</div>
