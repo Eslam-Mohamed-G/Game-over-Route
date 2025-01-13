@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
-import { useState } from 'react';
+import "./detailsStyle.css"
+import Footer from '../footer/Footer';
 
 function GamesDetails() {
     const { details, loading, category } = useContext(dataContext);
@@ -22,40 +23,53 @@ function GamesDetails() {
     const videoUrl = `https://www.freetogame.com/g/${details.id}/videoplayback.webm`;
     const hasVideo = true;
     return (
-        <div className="container text-white pb-5">
-            <div className="hstack py-4 justify-content-between">
-                <h1 className="text-center">Title: {details.title}</h1>
-                <NavLink className="btn-close btn-close-white" to={`/${category}`} />
-            </div>
+        <div className='details position-relative'>
+            <div className='gameprofile_background' style={{ backgroundImage: `url(${details.thumbnail})`}}><div className='gameprofile_gradient'></div></div>
+            <nav className="navbar navbar-expand-lg py-1 fixed-top">
+                <div className="container container-fluid">
+                    <h1 className="text-center">{details.title}</h1>
+                    <NavLink className="btn-close btn-close-white" to={`/${category}`} />
+                </div>
+            </nav>
+            <div className="container text-white py-4 py-md-5">
+                <div className="row">
+                    <div className="col-md-4 mt-5">
+                        <div className="card bg-transparent sidebar">
+                            <div className='px-3 pt-3'>
+                                {!isVideoPlaying && (<img src={details.thumbnail} className="card-img-top w-100" alt="image details" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }} />)}
+                                {hasVideo && (
+                                    <video className="card-img-top" loop preload="none" muted autoPlay onPlay={() => setIsVideoPlaying(true)} style={{ position: 'relative', zIndex: 0 }}>
+                                        <source src={videoUrl} type="video/webm" />
+                                        Your browser does not support the video tag.
+                                    </video>
+                                )}
+                            </div>
+                            <div className="card-body bg-transparent text-white">
+                                <p>{details.short_description}</p>
+                            </div>
 
-            <div className="row">
-                <div className="col-md-4 overflow-x-hidden z-3">
-                    <div className="card bg-transparent overflow-hidden opacity-100">
-                        {!isVideoPlaying && ( <img src={details.thumbnail} className="card-img-top w-100" alt="image details" style={{ position: 'absolute', top: 0, left: 0, zIndex: 1 }}/>)}
-                        {hasVideo && (
-                            <video className="featuredvideo" loop preload="none" muted autoPlay onPlay={()=>setIsVideoPlaying(true)}style={{ position: 'relative', zIndex: 0 }}>
-                                <source src={videoUrl} type="video/webm" />
-                                Your browser does not support the video tag.
-                            </video>
-                        )}
-                        <div className="card-body bg-transparent text-white pt-5">
-                            <p>{details.short_description}</p>
-                        </div>
-
-                        <div className="card-footer d-flex gap-3">
-                            <span className="badge text-bg-info px-3 align-content-center flex-grow-0">Free</span>
-                            <a className="btn btn-outline-warning flex-grow-1" target="_blank" rel="noopener noreferrer" href={details.game_url}>Show Game</a>
+                            <div className="card-footer d-flex gap-3">
+                                <span className="badge text-bg-info px-3 align-content-center flex-grow-0">Free</span>
+                                <a className="btn btn-outline-warning flex-grow-1" target="_blank" rel="noopener noreferrer" href={details.game_url}>Show Game</a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="col-md-8 position-relative end-0">
-                    <div>Category: <span className="badge text-bg-info">{details.genre}</span> </div>
-                    <div>Platform: <span className="badge text-bg-info">{details.platform}</span> </div>
-                    <div>Status: <span className="badge text-bg-info">{details.status}</span> </div>
-                    <p className="small">{details.description}</p>
+                    <div className="col-md-8 pt-5">
+                        <h3>About {details.title}</h3>
+                        <p className="small">{details.description}</p>
+                        <div className='row'>
+                            <h3>Information About Game</h3>
+                            <div className='col-6 col-lg-4 pb-3'><span className='title'>Publisher</span><br />{details.publisher}</div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Category:</span><br />{details.genre} </div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Developer</span><br />{details.developer}</div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Platform:</span><br /> {details.platform}</div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Status:</span><br /> {details.status}</div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Release Date</span><br />{details.release_date}</div>
+                        </div>
 
-                    <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+                        {/* <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+                        <h3>Screenshots From Game</h3>
                         <div className="carousel-inner">
                             {details.screenshots.map((img, index) => (
                                 <div className={`carousel-item ${index === 0 ? 'active' : ''}`} key={img.id}>
@@ -71,23 +85,34 @@ function GamesDetails() {
                             <span className="carousel-control-next-icon" aria-hidden="true" />
                             <span className="visually-hidden">Next</span>
                         </button>
-                    </div>
+                    </div> */}
+                        <div className='row g-2'>
+                            <h3>Screenshots From Game</h3>
+                            {details.screenshots.map((img) => (
+                                <div className='col-6 col-md-4' key={img.id}>
+                                    <img className="d-block w-100 rounded" src={img.image} alt='Screenshots' />
+                                </div>
+                            ))}
+                        </div>
 
-                    <div className='systemRequirements'>
-                        {details.minimum_system_requirements ? (
-                            <div className="text-left" key={details.id}>
-                                <h4><span>Graphics:</span> {details.minimum_system_requirements.graphics}</h4>
-                                <h4><span>Memory:</span> {details.minimum_system_requirements.memory}</h4>
-                                <h4><span>OS:</span> {details.minimum_system_requirements.os}</h4>
-                                <h4><span>Processor:</span> {details.minimum_system_requirements.processor}</h4>
-                                <h4><span>Storage:</span> {details.minimum_system_requirements.storage}</h4>
-                            </div>
-                        ) : (
-                            <p>No system requirements available.</p>
-                        )}
+                        <div className='systemRequirements'>
+                            <h3>System Requirements</h3>
+                            {details.minimum_system_requirements ? (
+                                <div className="row" key={details.id}>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Graphics:</span><br /> {details.minimum_system_requirements.graphics}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Memory:</span><br />  {details.minimum_system_requirements.memory}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>OS:</span><br />  {details.minimum_system_requirements.os}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Processor:</span><br />  {details.minimum_system_requirements.processor}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Storage:</span><br />  {details.minimum_system_requirements.storage}</div>
+                                </div>
+                            ) : (
+                                <p>No system requirements available.</p>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 }

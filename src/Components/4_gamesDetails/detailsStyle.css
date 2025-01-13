@@ -1,0 +1,29 @@
+.details {
+    color: var(--input-color);
+}
+
+.gameprofile_background {
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 38rem;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0rem;
+    z-index: -1;
+    opacity: .5;
+}
+
+.gameprofile_gradient {
+    background: linear-gradient(90deg, #292e33 0%, rgba(35, 46, 46, 0.1) 16.15%, rgba(35, 46, 46, 0.1) 80.21%, #292e33 100%), linear-gradient(180deg, rgb(39, 43, 48) 0%, rgba(0, 0, 0, 0.58) 33.85%, #292e33 100%);
+    height: 101%;
+}
+
+.sidebar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 75px;
+    z-index: 1;
+    /* border: 1px solid var(--input-color); */
+}

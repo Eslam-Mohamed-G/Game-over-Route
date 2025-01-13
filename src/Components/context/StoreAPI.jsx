@@ -94,7 +94,7 @@ function StoreAPI({ children }) {
                 params: { id: idGame },
                 headers: headers,
             });
-            // console.log(response.data);
+            console.log(response.data);
             setDetails(response.data);
         } catch (error) {
             console.error("Error fetching game details:", error);
