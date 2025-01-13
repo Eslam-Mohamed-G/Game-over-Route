@@ -31,7 +31,7 @@ function GamesDetails() {
                     <NavLink className="btn-close btn-close-white" to={`/${category}`} />
                 </div>
             </nav>
-            <div className="container text-white py-4 py-md-5">
+            <div className="container text-white pt-4 pt-md-5">
                 <div className="row">
                     <div className="col-md-4 mt-5">
                         <div className="card bg-transparent sidebar">
@@ -56,16 +56,40 @@ function GamesDetails() {
                     </div>
 
                     <div className="col-md-8 pt-5">
-                        <h3>About {details.title}</h3>
+                        <h3 className='title-h3'>About {details.title}</h3>
                         <p className="small">{details.description}</p>
+                        <h3 className='title-h3'>Additional Information</h3>
                         <div className='row'>
-                            <h3>Information About Game</h3>
                             <div className='col-6 col-lg-4 pb-3'><span className='title'>Publisher</span><br />{details.publisher}</div>
                             <div className='col-6 col-lg-4 pb-3'><span className="title">Category:</span><br />{details.genre} </div>
                             <div className='col-6 col-lg-4 pb-3'><span className="title">Developer</span><br />{details.developer}</div>
                             <div className='col-6 col-lg-4 pb-3'><span className="title">Platform:</span><br /> {details.platform}</div>
                             <div className='col-6 col-lg-4 pb-3'><span className="title">Status:</span><br /> {details.status}</div>
                             <div className='col-6 col-lg-4 pb-3'><span className="title">Release Date</span><br />{details.release_date}</div>
+                        </div>
+
+                        <div className='row g-2 my-3'>
+                            <h3 className='title-h3'>Screenshots From Game</h3>
+                            {details.screenshots.map((img) => (
+                                <div className='col-6 col-md-4' key={img.id}>
+                                    <img className="d-block w-100 rounded" src={img.image} alt='Screenshots' />
+                                </div>
+                            ))}
+                        </div>
+
+                        <h3 className='title-h3'>System Requirements</h3>
+                        <div className='systemRequirements'>
+                            {details.minimum_system_requirements ? (
+                                <div className="row" key={details.id}>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Graphics:</span><br /> {details.minimum_system_requirements.graphics}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Memory:</span><br />  {details.minimum_system_requirements.memory}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>OS:</span><br />  {details.minimum_system_requirements.os}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Processor:</span><br />  {details.minimum_system_requirements.processor}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Storage:</span><br />  {details.minimum_system_requirements.storage}</div>
+                                </div>
+                            ) : (
+                                <p>No system requirements available.</p>
+                            )}
                         </div>
 
                         {/* <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
@@ -86,29 +110,6 @@ function GamesDetails() {
                             <span className="visually-hidden">Next</span>
                         </button>
                     </div> */}
-                        <div className='row g-2'>
-                            <h3>Screenshots From Game</h3>
-                            {details.screenshots.map((img) => (
-                                <div className='col-6 col-md-4' key={img.id}>
-                                    <img className="d-block w-100 rounded" src={img.image} alt='Screenshots' />
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className='systemRequirements'>
-                            <h3>System Requirements</h3>
-                            {details.minimum_system_requirements ? (
-                                <div className="row" key={details.id}>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Graphics:</span><br /> {details.minimum_system_requirements.graphics}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Memory:</span><br />  {details.minimum_system_requirements.memory}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>OS:</span><br />  {details.minimum_system_requirements.os}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Processor:</span><br />  {details.minimum_system_requirements.processor}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Storage:</span><br />  {details.minimum_system_requirements.storage}</div>
-                                </div>
-                            ) : (
-                                <p>No system requirements available.</p>
-                            )}
-                        </div>
                     </div>
                 </div>
             </div>

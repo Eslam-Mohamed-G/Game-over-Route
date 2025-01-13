@@ -3,16 +3,16 @@
 }
 
 .gameprofile_background {
-    background-size: cover;
-    background-position: top;
     background-repeat: no-repeat;
-    height: 38rem;
+    background-position: top;
+    background-size: cover;
     position: absolute;
     left: 0;
     right: 0;
-    top: 0rem;
+    top: 6rem;
     z-index: -1;
     opacity: .5;
+    height: 25rem;
 }
 
 .gameprofile_gradient {
@@ -25,5 +25,17 @@
     position: sticky;
     top: 75px;
     z-index: 1;
-    /* border: 1px solid var(--input-color); */
+}
+.title-h3{
+    position: relative;
+}
+.title-h3::after{
+    content: "";
+    background-color: var(--input-color);
+    width: 100%;
+    height: .3px;
+    opacity: .2;
+    position: absolute;
+    bottom: -7px;
+    left: 0;
 }
