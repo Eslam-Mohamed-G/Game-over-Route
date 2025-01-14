@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.js";
@@ -10,7 +10,7 @@ import shooterImg from '../../assets/shooter.png';
 import { cardGames, mmorpgGames, shooterGames } from './gamesData';
 
 function Home() {
-    const { allGames, loading, setIdGame } = useContext(dataContext);
+    const { allGames, loading, setIdGame, setCategory } = useContext(dataContext);
     const [counter, setCounter] = useState(0);
     const [randomGames, setRandomGames] = useState([]);
     const navigate = useNavigate();
@@ -41,7 +41,7 @@ function Home() {
         );
     }
     return (
-        <div className='home'>
+        <div className='home pb-4'>
             <header>
                 <h1 className='px-5'>Discover the best <span>free-to-play</span> games!</h1>
                 <h2>more than <span>+ {counter}</span> games</h2>
@@ -82,9 +82,11 @@ function Home() {
                 </div>
             </div>
 
+            {/* mmorpgGames */}
             <div className='container mt-5 gamesData'>
+                <h4 className='text-capitalize'>mmorpg games</h4>
                 <div className="row mb-5">
-                    <div className="col-md-8 h-100">
+                    <div className="col-md-8 h-100 position-relative">
                         {mmorpgGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
                             key={game.id}
@@ -115,14 +117,17 @@ function Home() {
                                 </div>
                             </div>
                         ))}
+                        <NavLink to='/mmorpg' className={({ isActive }) => `btn custom-btn position-absolute ${isActive ? 'active' : ''}`} onClick={() => setCategory('mmorpg')}>show mmorpg</NavLink>
                     </div>
                     <div className="col-md-4 d-none d-md-block">
                         <img src={mmorpgImg} alt="mmorpg-Img" className='w-100 h-100' />
                     </div>
                 </div>
+
                 {/* shooter */}
+                <h4 className='text-capitalize'>shooter games</h4>
                 <div className="row mb-5">
-                    <div className="col-md-8 col-md-8 h-100">
+                    <div className="col-md-8 col-md-8 h-100 position-relative">
                         {shooterGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
                             key={game.id}
@@ -153,6 +158,8 @@ function Home() {
                                 </div>
                             </div>
                         ))}
+                        <NavLink to='/shooter' className={({ isActive }) => `btn custom-btn position-absolute ${isActive ? 'active' : ''}`} onClick={() => setCategory('shooter')}>show shooter</NavLink>
+
                     </div>
                     <div className="col-md-4 d-none d-md-block">
                         <img src={shooterImg} alt="shooter-Img" className='w-100 h-100' />
@@ -160,8 +167,9 @@ function Home() {
                 </div>
 
                 {/* card game */}
+                <h4 className='text-capitalize'>card games</h4>
                 <div className="row">
-                    <div className="col-md-8 col-md-8 h-100">
+                    <div className="col-md-8 col-md-8 h-100 position-relative">
                         {cardGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
                             key={game.id}
@@ -192,6 +200,7 @@ function Home() {
                                 </div>
                             </div>
                         ))}
+                        <NavLink to='/card' className={({ isActive }) => `btn custom-btn position-absolute ${isActive ? 'active' : ''}`} onClick={() => setCategory('card')}>show card</NavLink>
                     </div>
                     <div className="col-md-4 d-none d-md-block">
                         <img src={cardImg} alt="card-Img" className=' w-100 h-100' />
