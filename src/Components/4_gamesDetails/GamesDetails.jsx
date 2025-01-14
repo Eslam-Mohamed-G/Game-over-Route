@@ -52,7 +52,7 @@ function GamesDetails() {
                                 )}
                             </div>
                             <div className="card-body bg-transparent text-white">
-                                <p>{details.short_description}</p>
+                                <p className="card-text">{details.short_description}</p>
                             </div>
 
                             <div className="card-footer d-flex gap-3">
@@ -65,19 +65,19 @@ function GamesDetails() {
                     <div className="col-md-8 pt-5">
                         <h3 className='title-h3'>About {details.title}</h3>
                         <div className="card-body bg-transparent text-white">
-                            <p className="">{text}{!isExpanded ? "..." : ""}</p>
+                            <p className="card-text">{text}{!isExpanded ? "..." : ""}</p>
                             <p className="text-capitalize" onClick={() => setIsExpanded(!isExpanded)} type="button" >
                                 {!isExpanded ? "+ read more" : "- read less"}
                             </p>
                         </div>
                         <h3 className='title-h3'>Additional Information</h3>
                         <div className='row'>
-                            <div className='col-6 col-lg-4 pb-3'><span className='title'>Publisher</span><br />{details.publisher}</div>
-                            <div className='col-6 col-lg-4 pb-3'><span className="title">Category:</span><br />{details.genre} </div>
-                            <div className='col-6 col-lg-4 pb-3'><span className="title">Developer</span><br />{details.developer}</div>
-                            <div className='col-6 col-lg-4 pb-3'><span className="title">Platform:</span><br /> {details.platform}</div>
-                            <div className='col-6 col-lg-4 pb-3'><span className="title">Status:</span><br /> {details.status}</div>
-                            <div className='col-6 col-lg-4 pb-3'><span className="title">Release Date</span><br />{details.release_date}</div>
+                            <div className='col-6 col-lg-4 pb-3'><span className='title'>Publisher</span><br/><span className='information'>{details.publisher}</span></div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Category:</span><br/><span className='information'>{details.genre}</span></div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Developer</span><br/><span className='information'>{details.developer}</span></div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Platform:</span><br/><span className='information'>{details.platform}</span></div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Status:</span><br/><span className='information'>{details.status}</span></div>
+                            <div className='col-6 col-lg-4 pb-3'><span className="title">Release Date</span><br/><span className='information'>{details.release_date}</span></div>
                         </div>
 
                         <div className='row g-2 my-3'>
@@ -93,11 +93,11 @@ function GamesDetails() {
                         <div className='systemRequirements'>
                             {details.minimum_system_requirements ? (
                                 <div className="row" key={details.id}>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Graphics:</span><br /> {details.minimum_system_requirements.graphics}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Memory:</span><br />  {details.minimum_system_requirements.memory}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>OS:</span><br />  {details.minimum_system_requirements.os}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Processor:</span><br />  {details.minimum_system_requirements.processor}</div>
-                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Storage:</span><br />  {details.minimum_system_requirements.storage}</div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Graphics:</span><br /> <span className='information'>{details.minimum_system_requirements.graphics}</span></div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Memory:</span><br /><span className='information'>{details.minimum_system_requirements.memory}</span></div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>OS:</span><br /><span className='information'>{details.minimum_system_requirements.os}</span></div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Processor:</span><br /><span className='information'>{details.minimum_system_requirements.processor}</span></div>
+                                    <div className='col-6 col-lg-4 pb-3'><span className='title'>Storage:</span><br /><span className='information'>{details.minimum_system_requirements.storage}</span></div>
                                 </div>
                             ) : (
                                 <p>No system requirements available.</p>

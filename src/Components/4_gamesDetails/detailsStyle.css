@@ -1,4 +1,7 @@
 .details {
+    color: var(--header-color);
+}
+.card-text {
     color: var(--input-color);
 }
 
@@ -28,6 +31,7 @@
 }
 .title-h3{
     position: relative;
+    color: var(--text-color);
 }
 .title-h3::after{
     content: "";
@@ -38,4 +42,12 @@
     position: absolute;
     bottom: -7px;
     left: 0;
+}
+
+.title{
+    font-weight: 600;
+    color: var(--text-color);
+}
+.information{
+    color: var(--input-color);
 }
