@@ -2,10 +2,6 @@
     color: var(--input-color);
 }
 
-.card-body p{
-    transition: all ease-out .5s;
-}
-
 .gameprofile_background {
     background-repeat: no-repeat;
     background-position: top;

@@ -10,11 +10,10 @@ function GamesDetails() {
     const { details, loading, category } = useContext(dataContext);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const hight = !isExpanded ? '74px' : 'auto';
     if(details.description.length < 300){
         return details.description
     }
-    const text = !isExpanded ? details.description.substring(0, 300) : details.description.substring(0, details.description.length)
+    const text = !isExpanded ? details.description.substring(0, 300) : details.description.substring(0, details.description.length);
     // useEffect(() => {
     // }, [isExpanded]);
 
@@ -66,8 +65,7 @@ function GamesDetails() {
                     <div className="col-md-8 pt-5">
                         <h3 className='title-h3'>About {details.title}</h3>
                         <div className="card-body bg-transparent text-white">
-                            {/* <p className="">{text}{!isExpanded ? "..." : ""}</p> */}
-                            <p className="overflow-hidden" style={{height: hight}}>{text}{!isExpanded && "..."}</p>
+                            <p className="">{text}{!isExpanded ? "..." : ""}</p>
                             <p className="text-capitalize" onClick={() => setIsExpanded(!isExpanded)} type="button" >
                                 {!isExpanded ? "+ read more" : "- read less"}
                             </p>
