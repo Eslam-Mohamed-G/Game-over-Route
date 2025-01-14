@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function GamesGategory( {category} ) {
     const { gameUI, loading, setIdGame, setCategory } = useContext(dataContext);
@@ -11,6 +13,11 @@ function GamesGategory( {category} ) {
         if (category) {
             setCategory(category);
         }
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+        AOS.refresh()
     }, [category, setCategory]);
 
     // Pagination state
@@ -36,6 +43,7 @@ function GamesGategory( {category} ) {
                 {currentGames?.map((element) => (
                     <div
                         className='col'
+                        data-aos="fade-up"
                         key={element.id}
                         onClick={() => {
                             navigate(`/${element.title}/${element.id}`);

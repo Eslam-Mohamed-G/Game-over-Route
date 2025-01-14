@@ -1,44 +1,49 @@
 .games {
     margin-top: 100px;
 }
-.games .card{
+
+.games .card {
     transition: all ease-in-out .3s;
 }
-.games .card:hover{
+
+.games .card:hover {
     scale: 1.04;
 }
-.games .card .card-img-top, .card .text-bg-primary{
+
+.games .card .card-img-top, .card .text-bg-primary {
     opacity: .5;
     transition: all ease-in-out .3s;
 
 }
+
 .games .card:has(.card-body:hover) .card-img-top,
-.games .card:has(.card-body:hover) .text-bg-primary{
+.games .card:has(.card-body:hover) .text-bg-primary {
     opacity: 1;
 }
 
-.games .card-text{
+.games .card-text {
     color: var(--text-color);
-    display: -webkit-box; 
+    display: -webkit-box;
     -webkit-box-orient: vertical;
     overflow: hidden;
     -webkit-line-clamp: 3;
-    line-height: 1.5; 
-    max-height: calc(1.5em * 3); 
+    line-height: 1.5;
+    max-height: calc(1.5em * 3);
 }
 
-.games .hstack h6{
+.games .hstack h6 {
     color: var(--header-color);
 }
 
-.games .card-footer span{
+.games .card-footer span {
     background-color: var(--bg-span-color);
 }
 
-.pagination .page-item{
+.pagination .page-item {
     padding: 0;
     align-content: center;
 }
+
 .pagination .page-item .page-number {
     background-color: var(--body-color);
     color: var(--text-color);
@@ -56,7 +61,7 @@ div.page-number {
     padding: 0 5px;
 }
 
-li.active .page-number{
-    color: var(--navbar-color)!important;
+li.active .page-number {
+    color: var(--navbar-color) !important;
     border-bottom: 3px solid var(--navbar-color) !important;
 }

@@ -4,6 +4,8 @@ import { dataContext } from '../context/StoreAPI';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "./style.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 // function Games({ category }) {
@@ -43,7 +45,12 @@ function Games({ platform }) {
     if (platform) {
       setPlatform(platform);
     }
-  }, [platform, setPlatform]);
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+    AOS.refresh()
+  }, [platform, setPlatform, gameUI]);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
@@ -68,6 +75,7 @@ function Games({ platform }) {
         {currentGames?.map((element) => (
           <div
             className='col'
+            data-aos="fade-up"
             key={element.id}
             onClick={() => {
               navigate(`/${element.title}/${element.id}`);
