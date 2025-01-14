@@ -8,6 +8,8 @@ import cardImg from '../../assets/card.png';
 import mmorpgImg from '../../assets/mmorpg.png';
 import shooterImg from '../../assets/shooter.png';
 import { cardGames, mmorpgGames, shooterGames } from './gamesData';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 function Home() {
     const { allGames, loading, setIdGame, setCategory } = useContext(dataContext);

@@ -45,12 +45,10 @@ function Games({ platform }) {
     if (platform) {
       setPlatform(platform);
     }
-    AOS.init({
-      duration: 1000,
-      once: true,
-    });
-    AOS.refresh()
   }, [platform, setPlatform, gameUI]);
+  useEffect(() => {
+    AOS.init({once: false,});
+  }, []);
 
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
