@@ -18,6 +18,7 @@ function Home() {
     const navigate = useNavigate();
 
     useEffect(() => {
+        AOS.init({once: false,});
         if (counter < 400) {
             const interval = setInterval(() => {
                 setCounter(prevCounter => prevCounter + 1);
@@ -26,7 +27,6 @@ function Home() {
                 clearInterval(interval)
             }
         };
-        AOS.init({once: false,});
     }, [counter]);
 
     useEffect(() => {
@@ -55,6 +55,7 @@ function Home() {
                     {randomGames?.map((element) => (
                         <div
                             className='col'
+                            data-aos="fade-down"
                             key={element.id}
                             onClick={() => {
                                 navigate(`/${element.title}/${element.id}`);
