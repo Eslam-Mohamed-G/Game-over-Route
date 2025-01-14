@@ -13,11 +13,7 @@ function GamesGategory( {category} ) {
         if (category) {
             setCategory(category);
         }
-        AOS.init({
-            duration: 1000,
-            once: true,
-        });
-        AOS.refresh()
+        AOS.init();
     }, [category, setCategory]);
 
     // Pagination state

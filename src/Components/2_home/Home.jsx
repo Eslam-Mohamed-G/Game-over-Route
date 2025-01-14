@@ -26,6 +26,7 @@ function Home() {
                 clearInterval(interval)
             }
         };
+        AOS.init({once: false,});
     }, [counter]);
 
     useEffect(() => {
@@ -85,9 +86,9 @@ function Home() {
             </div>
 
             {/* mmorpgGames */}
-            <div className='container mt-5 gamesData'>
+            <div className='container mt-5 gamesData overflow-hidden'>
                 <h4 className='text-capitalize'>mmorpg games</h4>
-                <div className="row mb-5">
+                <div className="row mb-5" data-aos="fade-right">
                     <div className="col-md-8 h-100 position-relative">
                         {mmorpgGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
@@ -128,7 +129,7 @@ function Home() {
 
                 {/* shooter */}
                 <h4 className='text-capitalize'>shooter games</h4>
-                <div className="row mb-5">
+                <div className="row mb-5" data-aos="fade-left">
                     <div className="col-md-8 col-md-8 h-100 position-relative">
                         {shooterGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
@@ -170,7 +171,7 @@ function Home() {
 
                 {/* card game */}
                 <h4 className='text-capitalize'>card games</h4>
-                <div className="row">
+                <div className="row" data-aos="fade-right">
                     <div className="col-md-8 col-md-8 h-100 position-relative">
                         {cardGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
