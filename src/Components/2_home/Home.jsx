@@ -44,7 +44,7 @@ function Home() {
         );
     }
     return (
-        <div className='home pb-4'>
+        <div className='home'>
             <header>
                 <h1 className='px-5'>Discover the best <span>free-to-play</span> games!</h1>
                 <h2>more than <span>+ {counter}</span> games</h2>
@@ -172,7 +172,7 @@ function Home() {
 
                 {/* card game */}
                 <h4 className='text-capitalize'>card games</h4>
-                <div className="row" data-aos="fade-right">
+                <div className="row" data-aos="fade-right" style={{paddingBottom:60}}>
                     <div className="col-md-8 col-md-8 h-100 position-relative">
                         {cardGames.map((game) => (
                             <div className="game-card card grow shadow h-md-250 bg-black video-card" data-video-src="/g/601/videoplayback.webm"
