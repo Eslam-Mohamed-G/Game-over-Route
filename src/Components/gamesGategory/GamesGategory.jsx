@@ -24,6 +24,15 @@ function GamesGategory( {category} ) {
     const indexOfFirstGame = indexOfLastGame - gamePage;
     const currentGames = gameUI.slice(indexOfFirstGame, indexOfLastGame);
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    const scrollToTop = () => {
+        setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, 100);
+    };
+    
+    useEffect(() => {
+        scrollToTop();
+    }, [currentPage]);
 
     if (loading) {
         return (
@@ -72,11 +81,10 @@ function GamesGategory( {category} ) {
             <div className={`d-flex justify-content-center mt-5 ${gameUI.length < 20 ? 'd-none' : ''}`}>
                 <nav>
                     <ul className="pagination gap-2">
-                        <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+                        <li className={`page-item ${currentPage <= 1 ? 'd-none' : ''}`} onClick={()=>scrollToTop()}>
                             <div
                                 className="page-number"
                                 onClick={() => paginate(currentPage - 1)}
-                                disabled={currentPage === 1}
                             >
                                 <span><i className="bi bi-arrow-left-short"></i></span>
                             </div>
@@ -90,7 +98,7 @@ function GamesGategory( {category} ) {
                                 (pageNumber >= currentPage - 2 && pageNumber <= currentPage + 2)
                             ) {
                                 return (
-                                    <li key={pageNumber} className={`page-item ${currentPage === pageNumber ? 'active' : ''}`}>
+                                    <li key={pageNumber} className={`page-item ${currentPage === pageNumber ? 'active' : ''}`} onClick={()=>scrollToTop()}>
                                         <button
                                             className="page-number"
                                             onClick={() => paginate(pageNumber)}
@@ -114,11 +122,10 @@ function GamesGategory( {category} ) {
 
                             return null
                         })}
-                        <li className={`page-item ${currentPage === Math.ceil(gameUI.length / gamePage) ? 'disabled' : ''}`}>
+                        <li className={`page-item ${currentPage === Math.ceil(gameUI.length / gamePage) ? 'd-none' : ''}`} onClick={()=>scrollToTop()}>
                             <div
                                 className="page-number"
                                 onClick={() => paginate(currentPage + 1)}
-                                disabled={currentPage === Math.ceil(gameUI.length / gamePage)}
                             >
                                 <span className='w-100 rounded'><i className="bi bi-arrow-right-short"></i></span>
                             </div>
