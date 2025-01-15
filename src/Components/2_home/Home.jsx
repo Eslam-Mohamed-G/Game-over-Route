@@ -86,8 +86,8 @@ function Home() {
                 </div>
             </div>
 
-            {/* mmorpgGames */}
             <div className='container mt-5 gamesData overflow-hidden'>
+                {/* mmorpgGames */}
                 <h4 className='text-capitalize'>mmorpg games</h4>
                 <div className="row mb-5" data-aos="fade-right">
                     <div className="col-md-8 h-100 position-relative">
