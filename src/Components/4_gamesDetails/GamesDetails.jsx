@@ -10,10 +10,11 @@ function GamesDetails() {
     const { details, loading, category } = useContext(dataContext);
     const [isVideoPlaying, setIsVideoPlaying] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    if(details.description.length < 300){
-        return details.description
+    const gameDescription = details?.description || "Description is not available.";
+    if(gameDescription?.length < 300){
+        return gameDescription
     }
-    const text = !isExpanded ? details.description.substring(0, 300) : details.description.substring(0, details.description.length);
+    const text = !isExpanded ? gameDescription.substring(0, 300) : gameDescription.substring(0, gameDescription.length);
     // useEffect(() => {
     // }, [isExpanded]);
 
@@ -27,7 +28,7 @@ function GamesDetails() {
 
     if (!details) {return <div>No details found.</div>; }
     
-    const videoUrl = `https://www.freetogame.com/g/${details.id}/videoplayback.webm`;
+    const videoUrl = `https://www.freetogame.com/g/${details?.id}/videoplayback.webm`;
     const hasVideo = true;
     return (
         <div className='details position-relative'>
@@ -69,6 +70,7 @@ function GamesDetails() {
                             <p className="text-capitalize" onClick={() => setIsExpanded(!isExpanded)} type="button" >
                                 {!isExpanded ? "+ read more" : "- read less"}
                             </p>
+                            {/* <p>{gameDescription}</p> */}
                         </div>
                         <h3 className='title-h3'>Additional Information</h3>
                         <div className='row'>
